@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// import { TextGenerator, Icon, TextWrapper } from "./components/ui/TextGenerator.tsx";
+// import { DotBackgroundDemo } from './components/ui/grid-background.tsx';
+import { ParentComponent} from "./components/ParentComponent.tsx";
+import './output.css'
 
-function App() {
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-screen w-full">
+    <>
+    {/* <TextGenerator/> */}
+    {/* <TextWrapper/> */}
+    {/* <DotBackgroundDemo/> */}
+    <ParentComponent/>
+    </>
+    // </div>
+   
+   
+    
+    
   );
 }
 
