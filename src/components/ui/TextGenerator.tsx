@@ -1,4 +1,3 @@
-"client"
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import '../../index.css';
 import {ReactComponent as LinkedInIcon} from '../../assets/icons/linkedin.svg';
@@ -55,8 +54,6 @@ export const TextGenerator = ({ className, setIsVisible}) => {
 
     return () => cancelAnimationFrame(intervalId);
   }, [handleTextUpdate]);
-
-
 
   return (
     <>
