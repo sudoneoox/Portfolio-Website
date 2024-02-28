@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import TypeWriterEffect from 'react-typewriter-effect';
 import '../../index.css';
 import {ReactComponent as LinkedInIcon} from '../../assets/icons/linkedin.svg';
 import {ReactComponent as GitHubIcon} from '../../assets/icons/github1.svg';
@@ -61,8 +62,25 @@ export const TextGenerator = ({ className}) => {
         {displayString}
       </p>
     </div>
-    <h1 className="hello-im-tag z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2" style={{ fontFamily: 'vt323', fontSize: '7vh', fontWeight:'100'}}>Hello, I'm</h1> 
-    <h1 className="z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/8" style={{fontFamily: 'vt323', fontSize: '7vh'}}>Diego</h1>    </>
+
+    <div className='hello-im-tag z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+    <TypeWriterEffect
+      textStyle={{ fontFamily: 'vt323', fontSize: '7.0vh', color: 'white'}}
+      startDelay={100}
+      cursorColor="white"
+      multiText={[
+        'Hello, I\'m Diego',
+        'I\'m a student',
+        'I\'m a software engineer',
+        'I\'m a problem solver',
+        'I\'m a team player',
+        'Hello, I\'m Diego'
+      ]}
+      typeSpeed={100}
+      hideCursorAfterText={true}
+    />
+    </div>
+    </>
   );
 };
 

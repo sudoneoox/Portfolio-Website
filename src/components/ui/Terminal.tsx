@@ -103,10 +103,6 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
   const executeCommandWithColor = (command, args, print, runCommand, customMessage) => {
     
     const commandsWithColors = {
-      info: 'cyan',
-      contact: 'green',
-      'open-google': 'blue',
-      'type-text': 'magenta',
       show: 'darkgreen',
       // Add more commands and their associated colors here
     };
@@ -180,7 +176,6 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
             info: showInfo,
             contact: showContact,
             snake: showSnakeGame,
-            'type-text': executeCommandWithColor.bind(null, 'type-text'),
             'gui': () => {window.location.reload()},
             show: (args, print, runCommand) => executeCommandWithColor('show', args, print, runCommand, 'Welcome to my portfolio! Type "help" to see the available commands.'),
           }}
@@ -188,7 +183,6 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
             'info': 'shows about me info',
             'contact': 'shows contact info',
             'snake': 'renders a terminal snake game',
-            'type-text': 'types text incrementally with color',
             'gui': 'graphical portfolio interface'
           }}
           msg='Welcome to my portfolio! Type "help" to see the available commands.'

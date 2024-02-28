@@ -13,6 +13,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-scripts": "5.0.1",
+    "react-typewriter-effect": "^1.1.0",
     "react-winbox": "^1.5.0",
     "tailwind-merge": "^2.2.1",
     "terminal-in-react": "^4.3.1",
