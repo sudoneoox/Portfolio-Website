@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextGenerator } from "./ui/TextGenerator.tsx"; // Adjust the import path as necessary
 import { DotBackgroundDemo } from "./ui/grid-background.tsx"; // Adjust the import path as necessary
+import { Xterm } from "./ui/Terminal.tsx";
 import '../index.css';
 
 export function ParentComponent() {
@@ -16,11 +17,12 @@ export function ParentComponent() {
     return (
         <>
             {isTextGeneratorVisible ? (
-                <TextGenerator className="relative font-bold z-1 text-pretty justify-center" setIsVisible={handleClick} />
+                <TextGenerator className="dark:bg-black bg-dot-white/[0.3]  relative font-bold z-20 text-pretty justify-center" setIsVisible={handleClick} />
             ) : (
-                <div>
-                    <DotBackgroundDemo className="h-[50rem] w-full dark:bg-black bg-black  bg-dot-white/[0.3] relative flex items-center justify-center"/>
-                </div>
+                <>
+                    {/* <DotBackgroundDemo className="h-[50rem] w-full dark:bg-black bg-black  bg-dot-white/[0.3] relative flex items-center justify-center"/> */}
+                    <Xterm className={"h-[50rem] w-full dark:bg-black bg-black  bg-dot-white/[0.3] relative flex items-center justify-center"}/>
+                </>
             )}
         </>
     );
