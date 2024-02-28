@@ -6,7 +6,7 @@ import {ReactComponent as GitHubIcon} from '../../assets/icons/github1.svg';
 const linkedInProfileUrl = "https://www.linkedin.com/in/diegocoronado0/";
 const gitHubProfileUrl = "https://www.github.com/sudoneoox";
 
-export const TextGenerator = ({ className, setIsVisible}) => {
+export const TextGenerator = ({ className}) => {
   const [displayString, setDisplayString] = useState("");
   const [initialBuffer, setInitialBuffer] = useState("");
 
@@ -57,12 +57,12 @@ export const TextGenerator = ({ className, setIsVisible}) => {
 
   return (
     <>
-    <div ref={containerRef} className={`${className}`} onClick={setIsVisible} style={{ fontFamily: 'vt323', fontSize: '2.5vh'}}>
+    <div ref={containerRef} className={`${className}`}  style={{ fontFamily: 'vt323', fontSize: '2.5vh'}}>
       <p className="" style={{ color: '#174d25'}}>
         {displayString}
       </p>
     </div>
-    <div className="absolute navigation-links top-0 left-0 m-4" style={{ display: 'flex', gap: '20px'}}>
+    {/* <div className="absolute navigation-links top-0 left-0 m-4" style={{ display: 'flex', gap: '20px'}}>
       <a href="#" style={{color:"white", cursor:"pointer", fontFamily:'vt323', fontSize:'2.5vh'}}>xterm</a>
     </div>
     <div className="absolute navigation-links top-0 right-0 m-4" style={{ display: 'flex', gap: '20px'}}>
@@ -78,7 +78,7 @@ export const TextGenerator = ({ className, setIsVisible}) => {
       <a href={linkedInProfileUrl} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>
       <LinkedInIcon className="w-6 h-6"/>
       </a>
-    </div>
+    </div> */}
       
     <h1 className="hello-im-tag z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2" style={{ fontFamily: 'vt323', fontSize: '7vh', fontWeight:'100'}}>Hello, I'm</h1> 
     <h1 className="z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/8" style={{fontFamily: 'vt323', fontSize: '7vh'}}>Diego</h1>    </>

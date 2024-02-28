@@ -32,7 +32,7 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
 
     const color = commandsWithColors[command] || 'white';
     const message = customMessage || args.join(' ');
-    const style = {color, fontFamily: 'VT323', fontWeight: '', fontSize: '2vh'};
+    const style = {color, fontFamily: 'VT323', fontWeight: '', fontSize: '2.5vh'};
 
     // This part simulates the execution of the command. In a real scenario, you would
     // call the actual command function here.
@@ -99,26 +99,27 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
           color='white'
           backgroundColor='black'
           barColor='black'
-          style={{ fontWeight: "bold", fontSize: "2vh", fontFamily: "VT323" }}
+          style={{ fontWeight: "bold", fontSize: "2.5vh", fontFamily: "VT323" }}
           commands={{
-            popup: () => alert('Terminal in React'),
+            'popup': () => alert('Terminal in React'),
             info: showInfo,
             contact: showContact,
             render: showRender,
             'type-text': executeCommandWithColor.bind(null, 'type-text'),
-            gui: () => {window.location.reload()},
+            'gui': () => {window.location.reload()},
             show: (args, print, runCommand) => executeCommandWithColor('show', args, print, runCommand, 'Welcome to my portfolio! Type "help" to see the available commands.'),
           }}
           description={{
-            popup: 'alert',
-            info: 'shows about me info',
-            contact: 'shows contact info',
-            render: 'renders an ASCII art of a Three.js cube',
+            'popup': 'alert',
+            'info': 'shows about me info',
+            'contact': 'shows contact info',
+            'render': 'renders an ASCII art of a Three.js cube',
             'type-text': 'types text incrementally with color',
-            gui: 'graphical portfolio interface'
+            'gui': 'graphical portfolio interface'
           }}
           msg='Welcome to my portfolio! Type "help" to see the available commands.'
           startState='maximised'
+          actionHandlers={{handleClose: () => window.location.reload()}}
           
         />
       </div>
