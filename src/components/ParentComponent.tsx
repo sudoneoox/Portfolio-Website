@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { TextGenerator } from "./ui/TextGenerator.tsx"; // Adjust the import path as necessary
-import { DotBackgroundDemo } from "./ui/grid-background.tsx"; // Adjust the import path as necessary
 import {ReactComponent as LinkedInIcon} from '../assets/icons/linkedin.svg';
 import {ReactComponent as GitHubIcon} from '../assets/icons/github1.svg';
 import { Xterm } from "./ui/Terminal.tsx";
@@ -43,6 +42,8 @@ export function ParentComponent() {
                 <div className="absolute navigation-links top-0 left-0 m-4" style={{ display: 'flex', gap: '20px'}}>
                 <button onClick={() => showSection('xterm')} style={{color:"white", cursor:"pointer", fontFamily:'vt323', fontSize:'2.5vh'}}>.xterm()</button>
                 </div>
+
+
                 <div className="absolute navigation-links top-0 right-0 m-4" style={{ display: 'flex', gap: '20px'}}>
                 <button onClick={() => showSection('TextGenerator')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.about()</button>
                     <button onClick={() => showSection('projects')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.projects()</button>

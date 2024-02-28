@@ -103,20 +103,33 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
   const executeCommandWithColor = (command, args, print, runCommand, customMessage) => {
     
     const commandsWithColors = {
-      show: 'darkgreen',
+      show: 'magenta',
+      help: 'white',
+      else: 'red'
       // Add more commands and their associated colors here
     };
 
     const color = commandsWithColors[command] || 'white';
     const message = customMessage || args.join(' ');
-    const style = {color, fontFamily: 'VT323', fontWeight: '', fontSize: '2.5vh'};
+    const style = {color, fontFamily: 'VT323', fontWeight: '100', fontSize: '2.5vh'};
 
     // This part simulates the execution of the command. In a real scenario, you would
     // call the actual command function here.
-    setTimeout(() => {
+    if (command === 'help') {
+      if (terminalRef.current) {
+      const messages = message.split('\\');
+     
+        Object.entries(terminalRef.current.props['descriptions']).forEach(([command, color]) => {
+          print(
+            <p style={style}>{`${command}: ${color}`}</p>
+          );
+        });
+      }
+    } else {
       print(<p style={style}>{message}</p>);
-    }, command === 'type-text' ? 100 * args.length : 0);
+    }
   };
+  if(terminalRef.current) console.log(terminalRef.current.style);
 
   return (
     <>
@@ -130,6 +143,7 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
           y="center"
           background='black'
           onClose={() => setShowInfoWinBox(false)}
+
         >
           <p style={{ color: 'black', fontFamily:'VT323', fontSize:'2.5vh' }}>Hello, I'm Diego, a software engineer...</p>
         </WinBox>
@@ -166,28 +180,35 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
       )}
       <div className={`${className}`}>
         <Terminal
-          outputColor='white'
+          prompt='white'
+          outputColor='magenta'
           ref={terminalRef}
           color='white'
           backgroundColor='black'
           barColor='black'
-          style={{ fontWeight: "bold", fontSize: "2.25vh", fontFamily: "VT323" }}
+          style={{ fontWeight: "400", fontSize: "2.25vh", fontFamily: "VT323", }}
           commands={{
             info: showInfo,
             contact: showContact,
             snake: showSnakeGame,
             'gui': () => {window.location.reload()},
+            help: (args, print, runCommand) => executeCommandWithColor('help', args, print, runCommand, ''),
             show: (args, print, runCommand) => executeCommandWithColor('show', args, print, runCommand, 'Welcome to my portfolio! Type "help" to see the available commands.'),
+            debug:()=>{console.log(terminalRef.current)},
+            opentab:()=>{if(terminalRef.current) terminalRef.current.createTab();}
           }}
           descriptions={{
             'info': 'shows about me info',
             'contact': 'shows contact info',
             'snake': 'renders a terminal snake game',
-            'gui': 'graphical portfolio interface'
+            'gui': 'graphical portfolio interface',
+            'opentab': 'opens a terminal tab',
           }}
+          watchConsoleLogging={true}
           msg='Welcome to my portfolio! Type "help" to see the available commands.'
           startState='maximised'
           actionHandlers={{handleClose: () => window.location.reload()}}
+          commandPassThrough={(cmd, print, runCommand) => executeCommandWithColor('else', null, print, null, `-Passed through command: ${cmd} Not found-`)}
           
         />
       </div>
