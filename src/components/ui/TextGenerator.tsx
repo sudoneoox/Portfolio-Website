@@ -31,7 +31,6 @@ export const TextGenerator = ({ className}) => {
       const chunkSize = 50;
       const newDisplayString = initialBuffer.substring(0, displayString.length + chunkSize);
       setDisplayString(newDisplayString);
-      // console.log("handle text update", newDisplayString.length, initialBuffer.length);
     } else {
       const chunkSize = 50;
       setDisplayString((currentDisplay) => {
@@ -62,24 +61,6 @@ export const TextGenerator = ({ className}) => {
         {displayString}
       </p>
     </div>
-    {/* <div className="absolute navigation-links top-0 left-0 m-4" style={{ display: 'flex', gap: '20px'}}>
-      <a href="#" style={{color:"white", cursor:"pointer", fontFamily:'vt323', fontSize:'2.5vh'}}>xterm</a>
-    </div>
-    <div className="absolute navigation-links top-0 right-0 m-4" style={{ display: 'flex', gap: '20px'}}>
-
-      <a href="#" style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.about()</a>
-      <a href="#" style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.projects()</a>
-      <a href="#" style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.contact()</a> 
-
-      <a href={gitHubProfileUrl} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>
-        <GitHubIcon className="w-6 h-6" />
-      </a>
-
-      <a href={linkedInProfileUrl} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>
-      <LinkedInIcon className="w-6 h-6"/>
-      </a>
-    </div> */}
-      
     <h1 className="hello-im-tag z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2" style={{ fontFamily: 'vt323', fontSize: '7vh', fontWeight:'100'}}>Hello, I'm</h1> 
     <h1 className="z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/8" style={{fontFamily: 'vt323', fontSize: '7vh'}}>Diego</h1>    </>
   );

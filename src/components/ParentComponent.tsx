@@ -38,24 +38,24 @@ export function ParentComponent() {
 
     return (
         <>
-             { !isVisible.xterm && (
-                <>
-            <div className="absolute navigation-links top-0 left-0 m-4" style={{ display: 'flex', gap: '20px'}}>
-            <button onClick={() => showSection('xterm')} style={{color:"white", cursor:"pointer", fontFamily:'vt323', fontSize:'2.5vh'}}>xterm</button>
-            </div>
-            <div className="absolute navigation-links top-0 right-0 m-4" style={{ display: 'flex', gap: '20px'}}>
-            <button onClick={() => showSection('TextGenerator')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.about()</button>
-                <button onClick={() => showSection('projects')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.projects()</button>
-            <button onClick={() => showSection('contact')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.contact()</button> 
-                <a href={gitHubProfileUrl} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>
-                    <GitHubIcon className="w-6 h-6" />
-                </a>
-                <a href={linkedInProfileUrl} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>
-                <LinkedInIcon className="w-6 h-6"/>
-                </a>
-            </div>
+            { !isVisible.xterm && (
+            <>
+                <div className="absolute navigation-links top-0 left-0 m-4" style={{ display: 'flex', gap: '20px'}}>
+                <button onClick={() => showSection('xterm')} style={{color:"white", cursor:"pointer", fontFamily:'vt323', fontSize:'2.5vh'}}>.xterm()</button>
+                </div>
+                <div className="absolute navigation-links top-0 right-0 m-4" style={{ display: 'flex', gap: '20px'}}>
+                <button onClick={() => showSection('TextGenerator')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.about()</button>
+                    <button onClick={() => showSection('projects')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.projects()</button>
+                <button onClick={() => showSection('contact')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.contact()</button> 
+                    <a href={gitHubProfileUrl} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>
+                        <GitHubIcon className="w-6 h-6" />
+                    </a>
+                    <a href={linkedInProfileUrl} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>
+                    <LinkedInIcon className="w-6 h-6"/>
+                    </a>
+                </div>
             </>
-             )}
+            )}
 
         
             {isVisible.xterm && <Xterm className="h-[50rem] w-full dark:bg-black bg-black  bg-dot-white/[0.3] relative flex items-center justify-center" />}
