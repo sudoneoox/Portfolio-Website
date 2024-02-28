@@ -31,7 +31,7 @@ export const TextGenerator = ({ className, setIsVisible}) => {
       const chunkSize = 50;
       const newDisplayString = initialBuffer.substring(0, displayString.length + chunkSize);
       setDisplayString(newDisplayString);
-      console.log("handle text update", newDisplayString.length, initialBuffer.length);
+      // console.log("handle text update", newDisplayString.length, initialBuffer.length);
     } else {
       const chunkSize = 50;
       setDisplayString((currentDisplay) => {
@@ -58,9 +58,12 @@ export const TextGenerator = ({ className, setIsVisible}) => {
   return (
     <>
     <div ref={containerRef} className={`${className}`} onClick={setIsVisible} style={{ fontFamily: 'vt323', fontSize: '2.5vh'}}>
-      <p className="" style={{ color: 'red'}}>
+      <p className="" style={{ color: '#174d25'}}>
         {displayString}
       </p>
+    </div>
+    <div className="absolute navigation-links top-0 left-0 m-4" style={{ display: 'flex', gap: '20px'}}>
+      <a href="#" style={{color:"white", cursor:"pointer", fontFamily:'vt323', fontSize:'2.5vh'}}>xterm</a>
     </div>
     <div className="absolute navigation-links top-0 right-0 m-4" style={{ display: 'flex', gap: '20px'}}>
 
