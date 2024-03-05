@@ -11,18 +11,23 @@ export const TextGenerator = ({ className, showContact }) => {
   const contactInfo = `
  Feel free to reach out to me with any questions or business inquiries.
  I'm always open to new opportunities and meeting new people. Let's connect!
-                                                                             
-                                                                          
-                                                                           
-                                                                  
- 
- 
-  
 
-  
-  Email: diegoa2992@gmail.com
-  LinkedIn: ${linkedInProfileUrl}
-  GitHub: ${gitHubProfileUrl}\n\n\n\n\n\n\n\n\n\n`;
+ 
+
+ - Email: diegoa2992@gmail.com
+ - LinkedIn: ${linkedInProfileUrl}
+ - GitHub: ${gitHubProfileUrl}
+
+
+ I Look forward to hearing from you!
+
+                                                 
+                                                                 
+                                                                                          
+
+
+
+`;
 
   const [applyPstyle, setApplyPstyle] = useState(false);
   const [phase, setPhase] = useState('typing'); // typing, deleting, contactInfo, reverting
@@ -92,6 +97,9 @@ export const TextGenerator = ({ className, showContact }) => {
       const chunkSize = 10;
       const contactinfosubs = contactInfo.substring(0, displayString.length + chunkSize);
       setDisplayString(contactinfosubs);
+
+   
+     
     } else if(phase === 'reverting'){
       setDisplayString((currentDisplay) => {
         return currentDisplay.substring(0, currentDisplay.length - 10);
