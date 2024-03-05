@@ -8,7 +8,16 @@ const gitHubProfileUrl = "https://www.github.com/sudoneoox";
 export const TextGenerator = ({ className, showContact }) => {
   const [displayString, setDisplayString] = useState("");
   const [initialBuffer, setInitialBuffer] = useState("");
-  const contactInfo = `\n\n\n\nFeel free to reach out to me with any questions or business inquiries.\nI'm always open to new opportunities and meeting new people. Let's connect!
+  const contactInfo = `
+ Feel free to reach out to me with any questions or business inquiries.
+ I'm always open to new opportunities and meeting new people. Let's connect!
+                                                                             
+                                                                          
+                                                                           
+                                                                  
+ 
+ 
+  
 
   
   Email: diegoa2992@gmail.com
@@ -116,12 +125,11 @@ export const TextGenerator = ({ className, showContact }) => {
       <div ref={containerRef} className={`${className}`} style={{ fontFamily: 'vt323' }}>
         {
           phase !== 'contactInfo' ? (
-            <p className="" style={{ color: applyPstyle ? '#174d25' : 'red', fontSize: applyPstyle ? '2.5vh' : '3.5vh' }}>
+            <p className="" style={{ color: applyPstyle ? '#174d25' : 'red', fontSize: applyPstyle ? '150%' : '250%' }}>
               {displayString}
             </p>
           ) : (
-            // Ensure the pre tag is used only for contactInfo to preserve new lines and spaces
-            <pre style={{ color: 'red', fontFamily: 'vt323', fontSize: '3.5vh', whiteSpace: 'pre-wrap' }}>
+            <pre style={{ color: 'red', fontFamily: 'vt323', fontSize: '225%', whiteSpace: 'pre-wrap' }}>
               {displayString}
             </pre>
           )
@@ -134,7 +142,7 @@ export const TextGenerator = ({ className, showContact }) => {
         {/* TYPEWRITER MIDDLE OF PAGE */}
       <div className='hello-im-tag z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         <TypeWriterEffect
-          textStyle={{ fontFamily: 'vt323', fontSize: '7.0vh', color: 'white' }}
+          textStyle={{ fontFamily: 'vt323', fontSize: '500%', color: 'white' }}
           startDelay={100}
           cursorColor="white"
           multiText={[
