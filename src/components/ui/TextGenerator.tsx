@@ -5,49 +5,17 @@ import '../../index.css';
 const linkedInProfileUrl = "https://www.linkedin.com/in/diegocoronado0/";
 const gitHubProfileUrl = "https://www.github.com/sudoneoox";
 
-export const TextGenerator = ({ className, showContact }) => {
+export const TextGenerator = ({ className, showLight }) => {
   const [displayString, setDisplayString] = useState("");
   const [initialBuffer, setInitialBuffer] = useState("");
-  const contactInfo = `
- Feel free to reach out to me with any questions or business inquiries.
- I'm always open to new opportunities and meeting new people. Let's connect!
+  const bodyRef = useRef<HTMLBodyElement>(document.body);
 
- 
+  const [phase, setPhase] = useState('typing'); // typing, deleting, rewriting
+  const [textStyle, setTextStyle] = useState({ color: '#606643', fontSize: '150%', fontStyle: 'VT323' });
+  const [bigText, setBigText] = useState(false);
 
- - Email: diegoa2992@gmail.com
- - LinkedIn: ${linkedInProfileUrl}
- - GitHub: ${gitHubProfileUrl}
-
-
- I Look forward to hearing from you!
-
-                                                 
-                                                                 
-                                                                                          
-
-
-
-`;
-
-  const [applyPstyle, setApplyPstyle] = useState(false);
-  const [phase, setPhase] = useState('typing'); // typing, deleting, contactInfo, reverting
   const containerRef = useRef<HTMLDivElement>(null);
   const appendFlagRef = useRef(true);
-
-
-
-  useEffect(() => {
-    if(showContact) {
-      if(phase !== 'contactInfo') { // Only set to deleting if not already showing contact info
-        setPhase('deleting');
-      }
-    } else {
-      if(phase === 'contactInfo' || phase === 'deleting') { // Reset to typing only if needed
-        setPhase('reverting'); // Use reverting to clear contact info before typing again
-      }
-    }
-  }, [showContact, phase]);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,9 +23,8 @@ export const TextGenerator = ({ className, showContact }) => {
         const { offsetWidth, offsetHeight } = containerRef.current;
         const newDisplayString = generateRandomString(offsetWidth * offsetHeight / 200);
         setInitialBuffer(newDisplayString);
-        if(phase !== 'contactInfo'){
-          setDisplayString(newDisplayString);
-        }
+        setDisplayString(newDisplayString);
+        
       }
     };
 
@@ -65,50 +32,52 @@ export const TextGenerator = ({ className, showContact }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [phase]);
 
+  useEffect(() => {
+    if (showLight) {
+      // Trigger deletion for light mode transition
+      setPhase("deleting");
+    } else {
+      setPhase('typing')
+    }
+  }, [showLight]);
 
 
   const handleTextUpdate = useCallback(() => {
-    // console.log(phase)
-    if(phase === 'typing') {
-      if (appendFlagRef.current && containerRef.current) {
-        const chunkSize = 50;
-        const newDisplayString = initialBuffer.substring(0, displayString.length + chunkSize);
-        setDisplayString(newDisplayString);
-        if(!applyPstyle) {
-          setApplyPstyle(true);
-        }
-      } else {
-        const chunkSize = 50;
-        setDisplayString((currentDisplay) => {
-          const start = currentDisplay.substring(chunkSize);
-          const end = initialBuffer.substring(start.length, start.length + chunkSize);
-          return start + end;
-        });
-      }
-    } else if (phase === 'deleting'){
+      console.log(phase)
+      if(phase === "deleting"){
         setDisplayString((currentDisplay) => {
           return currentDisplay.substring(0, currentDisplay.length - 200);
-        });
-       if(displayString.length <= 0){
-          setPhase('contactInfo');
-          setApplyPstyle(false);
-      }
-    } else if(phase === 'contactInfo'){
-      const chunkSize = 10;
-      const contactinfosubs = contactInfo.substring(0, displayString.length + chunkSize);
-      setDisplayString(contactinfosubs);
+          });
+          if(displayString.length <= 0){
+              setTextStyle(
+                {
+                  color: showLight ? '#2C3E50' : '#C06D44', // Light mode text color
+                  fontSize: '150%', // Adjust font size if needed
+                  fontStyle: 'VT323' 
+                }
+              )
+              setBigText(!bigText);
+              setPhase('typing');
+              bodyRef.current.style.backgroundColor = showLight ? '#0D1926' : '#141414';
 
-   
-     
-    } else if(phase === 'reverting'){
-      setDisplayString((currentDisplay) => {
-        return currentDisplay.substring(0, currentDisplay.length - 10);
-      });
-      if(displayString.length <= 0){
-        setPhase('typing');
+            }
+      } else if (phase === "typing") {
+        if (appendFlagRef.current && containerRef.current) {
+          const chunkSize = 50;
+          const newDisplayString = initialBuffer.substring(0, displayString.length + chunkSize);
+          setDisplayString(newDisplayString);
+         
+        } else {
+          const chunkSize = 50;
+          setDisplayString((currentDisplay) => {
+            const start = currentDisplay.substring(chunkSize);
+            const end = initialBuffer.substring(start.length, start.length + chunkSize);
+            return start + end;
+          });
+        }
       }
-    }
-  }, [applyPstyle, contactInfo, displayString.length, initialBuffer, phase]);
+  }, [bigText, displayString.length, initialBuffer, phase, showLight]);
+
 
   useEffect(() => {
     const handleAnimationFrame = () => {
@@ -130,18 +99,12 @@ export const TextGenerator = ({ className, showContact }) => {
 
 
       {/* GENERATED CODE  */}
-      <div ref={containerRef} className={`${className}`} style={{ fontFamily: 'vt323' }}>
-        {
-          phase !== 'contactInfo' ? (
-            <p className="" style={{ color: applyPstyle ? '#174d25' : 'red', fontSize: applyPstyle ? '150%' : '250%' }}>
-              {displayString}
-            </p>
-          ) : (
-            <pre style={{ color: 'red', fontFamily: 'vt323', fontSize: '225%', whiteSpace: 'pre-wrap' }}>
-              {displayString}
-            </pre>
-          )
-        }
+      <div ref={containerRef} className={`${className}`} style={{ fontFamily: 'vt323', ...textStyle}}>
+       
+        <p className="">
+          {displayString}
+        </p>
+         
       </div>
 
 
@@ -150,7 +113,7 @@ export const TextGenerator = ({ className, showContact }) => {
         {/* TYPEWRITER MIDDLE OF PAGE */}
       <div className='hello-im-tag z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         <TypeWriterEffect
-          textStyle={{ fontFamily: 'vt323', fontSize: '500%', color: 'white' }}
+          textStyle={{ fontFamily: 'vt323', fontSize: '500%', color: !bigText ? 'white' : '#BBBBBB'}}
           startDelay={100}
           cursorColor="white"
           multiText={[

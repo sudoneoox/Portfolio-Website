@@ -94,6 +94,9 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
   const contactRef = useRef<WinBox>(null);
   const renderRef = useRef<WinBox>(null);
   const terminalRef = useRef(null);
+  
+  const bodyRef = useRef<HTMLBodyElement>(document.body);
+  console.log(bodyRef.current.style.backgroundColor)
 
   const showInfo = () => setShowInfoWinBox(true);
   const showContact = () => setShowContactWinBox(true);
@@ -178,13 +181,13 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
           </>
         </WinBox>
       )}
-      <div className={`${className}`}>
+      <div className={`${className}`} style={{ height: '50rem' }}>
         <Terminal
           prompt='white'
           outputColor='magenta'
           ref={terminalRef}
           color='white'
-          backgroundColor='black'
+          backgroundColor= 'black'
           barColor='black'
           style={{ fontWeight: "400", fontSize: "2.25vh", fontFamily: "VT323", }}
           commands={{
@@ -204,7 +207,7 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
             'gui': 'graphical portfolio interface',
             'opentab': 'opens a terminal tab',
           }}
-          watchConsoleLogging={true}
+          // watchConsoleLogging={true}
           msg='Welcome to my portfolio! Type "help" to see the available commands.'
           startState='maximised'
           actionHandlers={{handleClose: () => window.location.reload()}}
