@@ -14,18 +14,18 @@ export function WebsiteManager() {
     const [currentSection, setCurrentSection] = useState('TextGenerator');
     const [showContact, setShowContact] = useState(false);
 
-    const showSection = (section) => {
-        setCurrentSection(section);
-        // Ensure that toggling to 'TextGenerator' from 'contact' resets the contact info display
-        if (section === 'TextGenerator' && showContact) {
-            setShowContact(false);
-        }
-    };
-
     const toggleContactInfo = () => {
-        // This ensures that toggling contact info is only relevant when in the TextGenerator section
-        if (currentSection === 'TextGenerator') {
-            setShowContact(!showContact);
+        setShowContact(prev => !prev); // Directly toggle the state
+        console.log("Toggled contact info to: " + !showContact);
+    };
+    
+    const showSection = (section: string) => {
+        setCurrentSection(section);
+        if (section !== 'TextGenerator') {
+            setShowContact(false); // Ensure contact info is hidden when navigating away
+        }
+        else if (section === 'TextGenerator') {
+            toggleContactInfo();
         }
     };
 
@@ -46,7 +46,7 @@ export function WebsiteManager() {
 
                 <div className="absolute navigation-links top-0 right-0 m-4" style={{ display: 'flex', gap: '20px'}}>
                 <button onClick={() => showSection('TextGenerator')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.about()</button>
-                <button onClick={toggleContactInfo} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.contact()</button>
+                <button onClick={()=>  showSection('TextGenerator')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.contact()</button>
                 <button onClick={() => showSection('projects')} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.projects()</button>
                 <button onClick={openResume} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.resume()</button>
                 
