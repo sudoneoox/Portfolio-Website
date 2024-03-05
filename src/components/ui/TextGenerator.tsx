@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import TypeWriterEffect from 'react-typewriter-effect';
 import '../../index.css';
-import { ReactComponent as LinkedInIcon } from '../../assets/icons/linkedin.svg';
-import { ReactComponent as GitHubIcon } from '../../assets/icons/github1.svg';
 
 const linkedInProfileUrl = "https://www.linkedin.com/in/diegocoronado0/";
 const gitHubProfileUrl = "https://www.github.com/sudoneoox";
@@ -10,7 +8,7 @@ const gitHubProfileUrl = "https://www.github.com/sudoneoox";
 export const TextGenerator = ({ className, showContact }) => {
   const [displayString, setDisplayString] = useState("");
   const [initialBuffer, setInitialBuffer] = useState("");
-  const contactInfo = `Feel free to reach out to me with any questions or business inquiries. I'm always open to new opportunities and meeting new people. Let's connect!
+  const contactInfo = `Feel free to reach out to me with any questions or business inquiries.\nI'm always open to new opportunities and meeting new people. Let's connect!
   
   Email: diegoa2992@gmail.com
   LinkedIn: ${linkedInProfileUrl}
@@ -58,7 +56,7 @@ export const TextGenerator = ({ className, showContact }) => {
           return start + end;
         });
       }
-    } else if (phase == 'deleting'){
+    } else if (phase === 'deleting'){
       if (displayString.length > 0) {
         setDisplayString((currentDisplay) => {
           return currentDisplay.substring(0, currentDisplay.length - 200);
@@ -71,7 +69,7 @@ export const TextGenerator = ({ className, showContact }) => {
       const contactinfosubs = contactInfo.substring(0, displayString.length + chunkSize);
       setDisplayString(contactinfosubs);
     }
-  }, [displayString, initialBuffer]);
+  }, [contactInfo, displayString.length, initialBuffer, phase]);
 
   useEffect(() => {
     const handleAnimationFrame = () => {
@@ -96,7 +94,7 @@ export const TextGenerator = ({ className, showContact }) => {
         {phase !== 'contactInfo' ? (
         <p className="" style={{ color: '#174d25' }}>{displayString}</p>
       ) : (
-        <pre style={{ color: 'red', fontFamily: 'vt323', fontSize: '3.5vh' }}>{displayString}</pre>
+        <pre className="text-pretty" style={{ color: 'red', fontFamily: 'vt323', fontSize: '3.5vh' }}>{displayString}</pre>
       )}
       </div>
 
