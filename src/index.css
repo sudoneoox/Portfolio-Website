@@ -9,9 +9,10 @@
 
 body, html {
   background-color:#141414;
+  /* background-color: white; */
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .vt323 {
@@ -30,41 +31,3 @@ html, body {
 }
 
 
-/* styles.css */
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-  position: relative;
-  overflow: hidden;
-}
-
-.bento-grid::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('') center/cover no-repeat;
-  opacity: 0.2; /* Adjust the opacity for the mirrored effect */
-  z-index: -1;
-}
-
-.grid-item {
-  background: white;
-  padding: 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.grid-item:hover {
-  transform: scale(1.05);
-}
-
-.grid-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}

@@ -1,45 +1,95 @@
-import React from "react";
-import "../../index.css";
-
-import {
-  GlowingStarsBackgroundCard,
-  GlowingStarsDescription,
-  GlowingStarsTitle,
-} from "./GlowingStars.tsx";
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import { LayoutGrid } from "../utils/LayoutGrid.tsx";
+import "../../index.css"
 
 export function Projects() {
   return (
-    <div className="flex py-20 items-center justify-center antialiased">
-      <GlowingStarsBackgroundCard>
-        <GlowingStarsTitle>Next.js 14</GlowingStarsTitle>
-        <div className="flex justify-between items-end">
-          <GlowingStarsDescription>
-            The power of full-stack to the frontend. Read the release notes.
-          </GlowingStarsDescription>
-          <div className="h-8 w-8 rounded-full bg-[hsla(0,0%,100%,.1)] flex items-center justify-center">
-            <Icon />
-          </div>
-        </div>
-      </GlowingStarsBackgroundCard> 
-    </div>
+    <>
+      <LayoutGrid cards={cards} />
+    </>
+
   );
 }
 
-const Icon = () => {
+const SkeletonOne = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      className="h-4 w-4 text-white stroke-2"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-      />
-    </svg>
+    <div>
+      <p className="font-bold text-4xl text-white">House in the woods</p>
+      <p className="font-normal text-base text-white"></p>
+      <p className="font-normal text-base my-4 text-neutral-200">
+        A serene and tranquil retreat, this house in the woods offers a peaceful
+        escape from the hustle and bustle of city life.
+      </p>
+    </div>
   );
 };
+
+const SkeletonTwo = () => {
+  return (
+    <div>
+      <p className="font-bold text-4xl text-white">House above the clouds</p>
+      <p className="font-normal text-base text-white"></p>
+      <p className="font-normal text-base my-4 text-neutral-200">
+        Perched high above the world, this house offers breathtaking views and a
+        unique living experience. It&apos;s a place where the sky meets home,
+        and tranquility is a way of life.
+      </p>
+    </div>
+  );
+};
+const SkeletonThree = () => {
+  return (
+    <div>
+      <p className="font-bold text-4xl text-white">Greens all over</p>
+      <p className="font-normal text-base text-black"></p>
+      <p className="font-normal text-base my-4 text-neutral-200">
+        A house surrounded by greenery and nature&apos;s beauty. It&apos;s the
+        perfect place to relax, unwind, and enjoy life.
+      </p>
+    </div>
+  );
+};
+const SkeletonFour = () => {
+  return (
+    <div>
+      <p className="font-bold text-4xl text-white">Rivers are serene</p>
+      <p className="font-normal text-base text-black"></p>
+      <p className="font-normal text-base my-4 text-black-200">
+        A house by the river is a place of peace and tranquility. It&apos;s the
+        perfect place to relax, unwind, and enjoy life.
+      </p>
+    </div>
+  );
+};
+
+const cards = [
+  {
+    id: 1,
+    content: <SkeletonOne />,
+    className: "",
+    // thumbnail:
+      // "https://placehold.co/400"
+  },
+  {
+    id: 2,
+    content: <SkeletonTwo />,
+    className: "",
+    // thumbnail:
+      // "https://placehold.co/400"
+  },
+  {
+    id: 3,
+    content: <SkeletonThree />,
+    className: "",
+    // thumbnail:
+      // "https://placehold.co/400"
+  },
+  {
+    id: 4,
+    content: <SkeletonFour />,
+    className: "",
+    // thumbnail:
+      // "https://placehold.co/400"
+  },
+];

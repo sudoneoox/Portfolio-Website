@@ -3,6 +3,8 @@ import { TextGenerator } from "./ui/TextGenerator.tsx";
 import {ReactComponent as LinkedInIcon} from '../assets/icons/linkedin.svg';
 import {ReactComponent as GitHubIcon} from '../assets/icons/github1.svg';
 import {Projects} from "./ui/Projects.tsx";
+import { Projects1 } from "./ui/Projects1.tsx";
+
 import { Xterm } from "./ui/Terminal.tsx";
 import '../index.css';
 
@@ -31,10 +33,15 @@ export function WebsiteManager() {
       switch (currentSection) {
         case 'xterm':
           return <Xterm className="w-full dark:bg-black bg-black bg-dot-white/[0.3] relative flex items-center justify-center" />;
+        case 'projects':
+            return (
+                <div className="container mx-auto px-4" >
+                    <Projects1 />
+                </div>
+            );
         case 'TextGenerator':
           return <TextGenerator className="dark:bg-black bg-dot-white/[0.3] relative font-bold z-20 text-pretty justify-center" showLight={showLight} />;
-        case 'projects':
-          return (<div className="absolute top-1/2 right-1/2 left-1/2 z-40"><Projects/></div>);
+       
         default:
           return null;
       }
@@ -45,12 +52,12 @@ export function WebsiteManager() {
         <>
             { currentSection !== 'xterm' && (
             <>
-                <div className="absolute navigation-links top-0 left-0 m-4" style={{ display: 'flex', gap: '20px'}}>
+                <div className="absolute navigation-links top-0 left-0 m-4 z-50" style={{ display: 'flex', gap: '20px'}}>
                 <button onClick={() => showSection('xterm', false)} style={{color:"white", cursor:"pointer", fontFamily:'vt323', fontSize:'2.5vh'}}>.xterm()</button>
                 </div>
 
 
-                <div className="absolute navigation-links top-0 right-0 m-4" style={{ display: 'flex', gap: '20px'}}>
+                <div className="absolute navigation-links top-0 right-0 m-4 z-50" style={{ display: 'flex', gap: '20px'}}>
                 <button onClick={() => showSection('TextGenerator', showLight)} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.about()</button>
                 <a href="mailto:diegoa2992@gmail.com" style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.contact()</a>
                 <button onClick={() => showSection('projects', false)} style={{ color: 'white', cursor: 'pointer', fontFamily:'vt323', fontSize:'2.5vh' }}>.projects()</button>
@@ -66,7 +73,9 @@ export function WebsiteManager() {
                 </div>
             </>
             )}
+            
             {renderSection}
+            
         </>
     );
 }

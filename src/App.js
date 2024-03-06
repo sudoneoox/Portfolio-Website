@@ -4,7 +4,9 @@ import './output.css'
 export function App() {
   return (
     <>
+    <React.StrictMode>
     <WebsiteManager/>
+    </React.StrictMode>
     </>
   );
 }
