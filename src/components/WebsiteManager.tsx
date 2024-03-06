@@ -3,7 +3,6 @@ import { TextGenerator } from "./ui/TextGenerator.tsx";
 import {ReactComponent as LinkedInIcon} from '../assets/icons/linkedin.svg';
 import {ReactComponent as GitHubIcon} from '../assets/icons/github1.svg';
 import {Projects} from "./ui/Projects.tsx";
-import { Projects1 } from "./ui/Projects1.tsx";
 
 import { Xterm } from "./ui/Terminal.tsx";
 import '../index.css';
@@ -35,8 +34,8 @@ export function WebsiteManager() {
           return <Xterm className="w-full dark:bg-black bg-black bg-dot-white/[0.3] relative flex items-center justify-center" />;
         case 'projects':
             return (
-                <div className="container mx-auto px-4" >
-                    <Projects1 />
+                <div className="container relative justify-center justify-top mx-auto top-1/4 px-4" >
+                    <Projects />
                 </div>
             );
         case 'TextGenerator':
