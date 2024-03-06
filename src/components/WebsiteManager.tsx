@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo} from "react";
 import { TextGenerator } from "./ui/TextGenerator.tsx"; 
 import {ReactComponent as LinkedInIcon} from '../assets/icons/linkedin.svg';
 import {ReactComponent as GitHubIcon} from '../assets/icons/github1.svg';
@@ -13,23 +13,32 @@ export function WebsiteManager() {
 
     const [currentSection, setCurrentSection] = useState('TextGenerator');
     const [showLight, setShowLight] = useState(false);
-
- 
-    const showSection = (section: string, isLight: boolean) => {
-        setCurrentSection(section);
-        if (section !== 'TextGenerator') {
-            setShowLight(false); // Ensure contact info is hidden when navigating away
-        }
-        else if (section === 'TextGenerator') {
-            console.log('showLight', isLight);
-            setShowLight(!isLight);
-        }
-    };
-
-    
-    const openResume = () => { 
-        window.open('../../assets/Resume.pdf', '_blank');
-    } 
+  
+    const showSection = useCallback((section:string, isLight:boolean) => {
+      setCurrentSection(section);
+      if (section !== 'TextGenerator') {
+        setShowLight(false);
+      } else if (section === 'TextGenerator') {
+        setShowLight(!isLight);
+      }
+    }, []);
+  
+    const openResume = useCallback(() => {
+      window.open('../../assets/Resume.pdf', '_blank');
+    }, []);
+  
+    const renderSection = useMemo(() => {
+      switch (currentSection) {
+        case 'xterm':
+          return <Xterm className="w-full dark:bg-black bg-black bg-dot-white/[0.3] relative flex items-center justify-center" />;
+        case 'TextGenerator':
+          return <TextGenerator className="dark:bg-black bg-dot-white/[0.3] relative font-bold z-20 text-pretty justify-center" showLight={showLight} />;
+        case 'projects':
+          return (<div className="absolute top-1/2 right-1/2 left-1/2 z-40"><Projects/></div>);
+        default:
+          return null;
+      }
+    }, [currentSection, showLight]);
 
 
     return (
@@ -57,11 +66,7 @@ export function WebsiteManager() {
                 </div>
             </>
             )}
-
-        
-            {currentSection === 'xterm' && <Xterm className="w-full dark:bg-black bg-black bg-dot-white/[0.3] relative flex items-center justify-center" />}
-            {currentSection === 'TextGenerator' && <TextGenerator className="dark:bg-black bg-dot-white/[0.3] relative font-bold z-20 text-pretty justify-center" showLight={showLight} />}
-            {currentSection === 'projects' && <div className="w-full h-[50rem] flex items-center justify-center"><Projects /></div>}
+            {renderSection}
         </>
     );
 }

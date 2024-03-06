@@ -187,7 +187,7 @@ export const Xterm: React.FC<{ className: string }> = ({ className }) => {
           outputColor='magenta'
           ref={terminalRef}
           color='white'
-          backgroundColor= 'black'
+          backgroundColor= {(bodyRef.current.style.backgroundColor||'#141414')}
           barColor='black'
           style={{ fontWeight: "400", fontSize: "2.25vh", fontFamily: "VT323", }}
           commands={{

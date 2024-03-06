@@ -9,13 +9,22 @@ export const TextGenerator = ({ className, showLight }) => {
   const [displayString, setDisplayString] = useState("");
   const [initialBuffer, setInitialBuffer] = useState("");
   const bodyRef = useRef<HTMLBodyElement>(document.body);
-
   const [phase, setPhase] = useState('typing'); // typing, deleting, rewriting
   const [textStyle, setTextStyle] = useState({ color: '#606643', fontSize: '150%', fontStyle: 'VT323' });
   const [bigText, setBigText] = useState(false);
-
   const containerRef = useRef<HTMLDivElement>(null);
-  const appendFlagRef = useRef(true);
+  const animationFrameRef = useRef(null);
+  const transitionCompleteRef = useRef(false);
+
+  const debounce = (func, delay) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,96 +33,73 @@ export const TextGenerator = ({ className, showLight }) => {
         const newDisplayString = generateRandomString(offsetWidth * offsetHeight / 200);
         setInitialBuffer(newDisplayString);
         setDisplayString(newDisplayString);
-        
       }
     };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [phase]);
+  
+    const debouncedHandleResize = debounce(handleResize, 200);
+    window.addEventListener("resize", debouncedHandleResize);
+    return () => window.removeEventListener("resize", debouncedHandleResize);
+  }, []);
 
   useEffect(() => {
-    if (showLight) {
-      // Trigger deletion for light mode transition
-      setPhase("deleting");
-    } else {
-      setPhase('typing')
+    if (showLight && phase === 'typing' && transitionCompleteRef.current) {
+      setPhase('deleting');
+      transitionCompleteRef.current = false;
+    } else if (!showLight && phase === 'deleting' && transitionCompleteRef.current) {
+      setPhase('typing');
+      transitionCompleteRef.current = false;
     }
-  }, [showLight]);
-
+  }, [showLight, phase]);
 
   const handleTextUpdate = useCallback(() => {
-      console.log(phase)
-      if(phase === "deleting"){
-        setDisplayString((currentDisplay) => {
-          return currentDisplay.substring(0, currentDisplay.length - 200);
-          });
-          if(displayString.length <= 0){
-              setTextStyle(
-                {
-                  color: showLight ? '#2C3E50' : '#C06D44', // Light mode text color
-                  fontSize: '150%', // Adjust font size if needed
-                  fontStyle: 'VT323' 
-                }
-              )
-              setBigText(!bigText);
-              setPhase('typing');
-              bodyRef.current.style.backgroundColor = showLight ? '#0D1926' : '#141414';
-
-            }
-      } else if (phase === "typing") {
-        if (appendFlagRef.current && containerRef.current) {
-          const chunkSize = 50;
-          const newDisplayString = initialBuffer.substring(0, displayString.length + chunkSize);
-          setDisplayString(newDisplayString);
-         
-        } else {
-          const chunkSize = 50;
-          setDisplayString((currentDisplay) => {
-            const start = currentDisplay.substring(chunkSize);
-            const end = initialBuffer.substring(start.length, start.length + chunkSize);
-            return start + end;
-          });
-        }
+    console.log(phase);
+    if (phase === 'deleting') {
+      setDisplayString((currentDisplay) => currentDisplay.slice(0, -200));
+      console.log(displayString.length);
+      if (displayString.length <= 0) {
+        setTextStyle({
+          color: showLight ? '#2C3E50' : '#C06D44',
+          fontSize: '150%',
+          fontStyle: 'VT323',
+        });
+        setBigText(!bigText);
+        setPhase('typing');
+        bodyRef.current.style.backgroundColor = showLight ? '#0D1926' : '#141414';
+        transitionCompleteRef.current = true;
       }
+    } else if (phase === 'typing') {
+      const chunkSize = 50;
+      const newDisplayString = initialBuffer.slice(0, displayString.length + chunkSize);
+      setDisplayString(newDisplayString);
+      if (displayString.length >= initialBuffer.length) {
+        transitionCompleteRef.current = true;
+      }
+    }
   }, [bigText, displayString.length, initialBuffer, phase, showLight]);
-
 
   useEffect(() => {
     const handleAnimationFrame = () => {
       handleTextUpdate();
-      requestAnimationFrame(handleAnimationFrame);
+      animationFrameRef.current = requestAnimationFrame(handleAnimationFrame);
     };
-
     const initialBufferValue = generateRandomString(window.innerWidth * window.innerHeight / 200);
     setInitialBuffer(initialBufferValue);
-    const intervalId = requestAnimationFrame(handleAnimationFrame);
-
-    return () => cancelAnimationFrame(intervalId);
+    animationFrameRef.current = requestAnimationFrame(handleAnimationFrame);
+    return () => cancelAnimationFrame(animationFrameRef.current);
   }, [handleTextUpdate]);
-
-
 
   return (
     <>
-
-
-      {/* GENERATED CODE  */}
-      <div ref={containerRef} className={`${className}`} style={{ fontFamily: 'vt323', ...textStyle}}>
-       
+      {/* GENERATED CODE */}
+      <div ref={containerRef} className={`${className}`} style={{ fontFamily: 'vt323', ...textStyle }}>
         <p className="">
           {displayString}
         </p>
-         
       </div>
-
-
-
-
-        {/* TYPEWRITER MIDDLE OF PAGE */}
+      {/* TYPEWRITER MIDDLE OF PAGE */}
       <div className='hello-im-tag z-20 text-white absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         <TypeWriterEffect
-          textStyle={{ fontFamily: 'vt323', fontSize: '500%', color: !bigText ? 'white' : '#BBBBBB'}}
+          textStyle={{ fontFamily: 'vt323', fontSize: '500%', color: !bigText ? 'white' : '#BBBBBB' }}
           startDelay={100}
           cursorColor="white"
           multiText={[
