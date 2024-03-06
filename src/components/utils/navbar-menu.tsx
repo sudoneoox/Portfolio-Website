@@ -13,7 +13,7 @@ export const Link = ({
 }) => {
     return (
         <a href={href} className={className}>
-            {...children}
+            {children}
         </a>
     );
 };
