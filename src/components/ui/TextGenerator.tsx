@@ -42,41 +42,41 @@ export const TextGenerator = ({ className, showLight }) => {
   }, []);
 
   useEffect(() => {
-    if (showLight && phase === 'typing' && transitionCompleteRef.current) {
+    if (phase === 'typing' && transitionCompleteRef.current) {
       setPhase('deleting');
-      transitionCompleteRef.current = false;
-    } else if (!showLight && phase === 'deleting' && transitionCompleteRef.current) {
-      setPhase('typing');
       transitionCompleteRef.current = false;
     }
   }, [showLight, phase]);
 
+
   const handleTextUpdate = useCallback(() => {
-    console.log(phase);
-    if (phase === 'deleting') {
-      setDisplayString((currentDisplay) => currentDisplay.slice(0, -200));
-      console.log(displayString.length);
-      if (displayString.length <= 0) {
-        setTextStyle({
-          color: showLight ? '#2C3E50' : '#C06D44',
-          fontSize: '150%',
-          fontStyle: 'VT323',
-        });
-        setBigText(!bigText);
-        setPhase('typing');
-        bodyRef.current.style.backgroundColor = showLight ? '#0D1926' : '#141414';
-        transitionCompleteRef.current = true;
-      }
-    } else if (phase === 'typing') {
+    if (phase === 'typing') {
       const chunkSize = 50;
       const newDisplayString = initialBuffer.slice(0, displayString.length + chunkSize);
       setDisplayString(newDisplayString);
-      if (displayString.length >= initialBuffer.length) {
+      if (displayString.length >= 20) {
         transitionCompleteRef.current = true;
       }
     }
+    else if (phase === 'deleting') {
+      setDisplayString((currentDisplay) => currentDisplay.slice(0, window.innerWidth <= 600 ? -50 : -200));
+      if (displayString.length <= 10) {
+        setTextStyle({
+          color: showLight ? '#2C3E50' : '#606643',
+          fontSize: '150%',
+          fontStyle: 'VT323',
+        });
+        setPhase('typing');
+        setBigText(!bigText);
+        bodyRef.current.style.backgroundColor = showLight ? '#0D1926' : '#141414';
+        transitionCompleteRef.current = false;
+       
+      }
+    } 
   }, [bigText, displayString.length, initialBuffer, phase, showLight]);
 
+
+  
   useEffect(() => {
     const handleAnimationFrame = () => {
       handleTextUpdate();
@@ -92,7 +92,7 @@ export const TextGenerator = ({ className, showLight }) => {
     <>
       {/* GENERATED CODE */}
       <div ref={containerRef} className={`${className}`} style={{ fontFamily: 'vt323', ...textStyle }}>
-        <p className="">
+        <p>
           {displayString}
         </p>
       </div>

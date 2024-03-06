@@ -8,12 +8,16 @@ module.exports = {
     "./src/utils/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/assets/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
+    "./src/components/ui/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/*.{js,ts,jsx,tsx,mdx}"
   ],
   darkMode: "class",
   theme: {
+    container:{
+      center: true,
+      padding: "1rem",
+    },
     extend: {},
   },
   plugins: [addVariablesForColors],

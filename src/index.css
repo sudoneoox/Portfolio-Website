@@ -5,14 +5,26 @@
 
 :root {
   /* background-color: rgb(0, 0, 0); */
+  overflow: hidden !important;
 }
 
 body, html {
   background-color:#141414;
-  /* background-color: white; */
   margin: 0;
   padding: 0;
-  overflow: scroll;
+}
+
+.containerForProjects{
+  position: relative !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, 10%) !important;
+}
+
+@media screen and (min-width: 768px) {
+  .containerForProjects {
+    transform: translate(-55%, 25%) !important;
+  }
 }
 
 .vt323 {

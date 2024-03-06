@@ -3,9 +3,25 @@ import { TextGenerator } from "./ui/TextGenerator.tsx";
 import {ReactComponent as LinkedInIcon} from '../assets/icons/linkedin.svg';
 import {ReactComponent as GitHubIcon} from '../assets/icons/github1.svg';
 import {Projects} from "./ui/Projects.tsx";
+import { Navbar } from "./ui/Navbar.tsx";
 
 import { Xterm } from "./ui/Terminal.tsx";
 import '../index.css';
+
+
+
+
+
+
+
+
+
+// !FIX DELETE RELATIVE TO THE SCREENS SIZE IN THE TEXT GENERATOR
+// ! MAKE GRID IN PROJECTS RELATIVE TO SCREENS SIZE HEIGHT ON PROJECTS.tsx and its helper
+
+
+
+
 
 const linkedInProfileUrl = "https://www.linkedin.com/in/diegocoronado0/";
 const gitHubProfileUrl = "https://www.github.com/sudoneoox";
@@ -14,9 +30,11 @@ export function WebsiteManager() {
 
     const [currentSection, setCurrentSection] = useState('TextGenerator');
     const [showLight, setShowLight] = useState(false);
+    const[isMenuOpen, setIsMenuOpen] = useState(false);
   
     const showSection = useCallback((section:string, isLight:boolean) => {
       setCurrentSection(section);
+      setIsMenuOpen(false)
       if (section !== 'TextGenerator') {
         setShowLight(false);
       } else if (section === 'TextGenerator') {
@@ -34,8 +52,8 @@ export function WebsiteManager() {
           return <Xterm className="w-full dark:bg-black bg-black bg-dot-white/[0.3] relative flex items-center justify-center" />;
         case 'projects':
             return (
-                <div className="container relative justify-center justify-top mx-auto top-1/4 px-4" >
-                    <Projects />
+                <div className="container" >
+                    <Projects className=""/>
                 </div>
             );
         case 'TextGenerator':
@@ -46,6 +64,7 @@ export function WebsiteManager() {
       }
     }, [currentSection, showLight]);
 
+    const toggleMenu = () => {setIsMenuOpen(!isMenuOpen)};
 
     return (
         <>
