@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavConfig, NavbarProps, ActiveItem } from "../_utils/types.ts";
 import { Github, Linkedin } from "lucide-react";
+import { useTheme } from "../../config.tsx";
 import "../../output.css";
 
 const defaultNavConfig: NavConfig = {
@@ -41,56 +42,70 @@ const defaultNavConfig: NavConfig = {
 
 const Navbar: React.FC<NavbarProps> = ({
   config = defaultNavConfig,
-  currentlyActiveItem,
 }: {
   config: any;
-  currentlyActiveItem: string;
 }) => {
-  const [clickedItem, setClickedItem] = useState<string | null>(null);
-  const { styles, brand, menuItems, socialIcons } = config;
-
-  const handleClick = (itemName: string) => {
-    setClickedItem(itemName);
-    currentlyActiveItem = clickedItem;
-    setTimeout(() => setClickedItem(null), 300); // Reset after animation
+  const { activeRoute, setActiveRoute } = useTheme();
+  const handleNavigation = (route: string) => {
+    if (route) {
+      setActiveRoute(route);
+    }
   };
 
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
-          {/* Left side - Brand */}
+    <nav className={config.styles.navbar}>
+      <div className={config.styles.container}>
+        <div className={config.styles.wrapper}>
+          {/* Brand */}
           <div>
-            <a href={brand.href} className={styles.logo}>
-              {brand.name}
-            </a>
+            <button
+              onClick={() => handleNavigation(config.brand.route)}
+              className={config.styles.logo}
+            >
+              {config.brand.name}
+            </button>
           </div>
 
-          {/* Right side - Menu Items and Social Icons */}
-          <div className={styles.menuContainer}>
-            {/* Menu Items */}
-            {menuItems.map((item: any) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={`${styles.menuItem} ${
-                  clickedItem === item.name ? "scale-105" : ""
-                }`}
-                onClick={() => handleClick(item.name)}
-              >
-                {item.name}
-              </a>
-            ))}
+          {/* Menu Items and Social Icons */}
+          <div className={config.styles.menuContainer}>
+            {config.menuItems.map((item) =>
+              item.route ? (
+                <button
+                  key={item.name}
+                  onClick={() => handleNavigation(item.route)}
+                  className={`${config.styles.menuItem} ${
+                    activeRoute === item.route
+                      ? "scale-105 text-indigo-600 dark:text-indigo-400"
+                      : ""
+                  }`}
+                >
+                  {item.name}
+                </button>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={config.styles.menuItem}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    item.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                >
+                  {item.name}
+                </a>
+              ),
+            )}
 
-            {/* Social Icons */}
-            <div className={styles.iconContainer}>
-              {socialIcons.map((item: any) => {
+            <div className={config.styles.iconContainer}>
+              {config.socialIcons.map((item) => {
                 const Icon = item.icon;
                 return (
                   <a
                     key={item.name}
                     href={item.href}
-                    className={styles.icon}
+                    className={config.styles.icon}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.name}

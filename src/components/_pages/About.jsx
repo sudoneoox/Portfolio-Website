@@ -1,1 +1,5 @@
- Projects.jsx TextGenerator.jsx
+const About = () => {
+  return;
+};
+
+export default About;
