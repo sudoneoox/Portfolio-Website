@@ -2,19 +2,18 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
+const { join } = require("path");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/utils/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/assets/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/ui/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/*.{js,ts,jsx,tsx,mdx}"
+    join(__dirname, "./src/components/**/*.{js,ts,jsx,tsx,mdx}"),
+    join(__dirname, "./src/components/*.{js.ts.jsx.tsx.mdx}"),
+    join(__dirname, "./src/*.{js,ts,jsx,tsx,mdx}"),
   ],
   darkMode: "class",
   theme: {
-    container:{
+    container: {
       center: true,
       padding: "1rem",
     },
@@ -27,7 +26,7 @@ module.exports = {
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
   );
 
   addBase({

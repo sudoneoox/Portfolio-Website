@@ -1,12 +1,13 @@
 import React from "react";
-import { WebsiteManager} from "./components/WebsiteManager.tsx";
-import './output.css'
+import PortfolioManager from "./components/PortfolioManager.tsx";
+import "./output.css";
+
 export function App() {
   return (
     <>
-    <React.StrictMode>
-    <WebsiteManager/>
-    </React.StrictMode>
+      <React.StrictMode>
+        <PortfolioManager />
+      </React.StrictMode>
     </>
   );
 }
