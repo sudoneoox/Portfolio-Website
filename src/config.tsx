@@ -41,6 +41,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
+
   return (
     <ThemeContext.Provider
       value={{ isDarkMode, toggleDarkMode, activeRoute, setActiveRoute }}
@@ -51,8 +52,3 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const useTheme = () => useContext(ThemeContext);
-
-// constants
-export const RESUME = "/assets/Resume-Tex/resume.pdf";
-export const GITHUB_URL = "https://github.com/sudoneoox";
-export const LINKEDIN_URL = "https://linkedin.com/in/diegocoronado0";

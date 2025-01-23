@@ -20,10 +20,12 @@ export interface MenuItem {
   name: string;
   activeItem?: ActiveItem;
   href?: string;
+  route?: string;
 }
 
 export interface BrandConfig {
   name: string;
+  route?: string;
 }
 
 export interface SocialIcon {

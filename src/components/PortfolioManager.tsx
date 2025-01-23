@@ -30,7 +30,7 @@ const PortfolioManager: React.FC = () => {
     <div
       className={`min-h-screen transition-colors duration-300 ${isDarkMode ? "dark bg-gray-900" : "bg-gray-50"}`}
     >
-      <Navbar onRouteChange={setActiveRoute} activeRoute={activeRoute} />
+      <Navbar />
       <button
         onClick={toggleDarkMode}
         className="fixed bottom-4 right-4 p-3 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg hover:scale-110 transition-transform duration-200"
