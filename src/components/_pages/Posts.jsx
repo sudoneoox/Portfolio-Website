@@ -5,7 +5,7 @@ const Posts = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-900 w-full">
       {/* Container with max width and centered */}
-      <div className="w-[100%] max-w-[1800px] mx-auto">
+      <div className="w-[100%] max-w-[1800px] mx-auto pt-0 px-1">
         {/* Grid layout with fixed sidebar and flexible content */}
         <div className="grid lg:grid-cols-[300px_1fr]">
           <LeftSideSummary />
@@ -22,7 +22,7 @@ const MainContent = () => {
   return (
     <>
       {/* Main Content - full width on mobile, with correct spacing on desktop */}
-      <main className="w-full max-w-4xl px-2 g:px-12 py-20 ">
+      <main className="w-full max-w-3xl px-2 g:px-12 py-8 ml-8 ">
         <div className="max-w-none">
           <h1 className="text-4xl font-bold mb-7 text-zinc-900 dark:text-white">
             Latest Posts

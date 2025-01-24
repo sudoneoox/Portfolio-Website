@@ -9,7 +9,7 @@ export const PERSONAL_INFO = {
   university: "University of Houston",
   location: "Houston, TX",
   email: "diegoa2992@gmail.com",
-  bio: "I am a mathematics and computer science student thats always looking to learn.",
+  bio: "I am a mathematics and computer science student that's always looking to learn.",
   interests: [
     "Software Engineering",
     "Backend Development",

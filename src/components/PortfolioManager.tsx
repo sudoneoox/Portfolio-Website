@@ -43,7 +43,7 @@ const PortfolioManager: React.FC = () => {
           <Moon className="w-5 h-5 text-gray-700" />
         )}
       </button>
-      <main className="pt-20 px-4 max-w-7xl mx-auto">{renderContent()}</main>
+      <main className="pt-0 px-4 max-w-7xl mx-auto">{renderContent()}</main>
       <Footer />
     </div>
   );
