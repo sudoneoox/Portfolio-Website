@@ -44,3 +44,8 @@ export interface NavConfig {
 export interface NavbarProps {
   config?: NavConfig;
 }
+
+export interface ScrollHideOptions {
+  threshold?: number;
+  delay?: number;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "../config.tsx";
 import Navbar from "./_ui/navbar.tsx";
-import About from "./_pages/About.jsx";
+import Posts from "./_pages/Posts.jsx";
 import Projects from "./_pages/Projects.jsx";
 import Playground from "./_pages/Playground.jsx";
 import Home from "./_pages/Home.jsx";
@@ -16,8 +16,8 @@ const PortfolioManager: React.FC = () => {
 
   const renderContent = () => {
     switch (activeRoute) {
-      case "about":
-        return <About />;
+      case "posts":
+        return <Posts />;
       case "projects":
         return <Projects />;
       case "playground":
