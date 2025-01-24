@@ -5,9 +5,9 @@ const Posts = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-900 w-full">
       {/* Container with max width and centered */}
-      <div className="w-[100%] max-w-[1800px] mx-auto pt-0 px-1">
+      <div className="w-[100%] max-w-[1800px] mx-auto">
         {/* Grid layout with fixed sidebar and flexible content */}
-        <div className="grid lg:grid-cols-[750px_1fr] gap-8">
+        <div className="grid lg:grid-cols-[300px_1fr]">
           <LeftSideSummary />
           <MainContent />
         </div>
@@ -16,11 +16,13 @@ const Posts = () => {
   );
 };
 
+// POSTS components
+// blog like style
 const MainContent = () => {
   return (
     <>
       {/* Main Content - full width on mobile, with correct spacing on desktop */}
-      <main className="w-full lg:ml-[300px] px-5 lg:px-16 g:px-12 py-16">
+      <main className="w-full max-w-4xl px-2 g:px-12 py-20 ">
         <div className="max-w-none">
           <h1 className="text-4xl font-bold mb-7 text-zinc-900 dark:text-white">
             Latest Posts
@@ -39,9 +41,10 @@ const MainContent = () => {
                 className="text-2xl font-semibold mb-6 text-zinc-900 dark:text-white"
                 href={"google.com"}
               >
-                Sample Blog Post {post}
+                Sample Blog Post {post}{" "}
               </a>
-              <div className="space-y-6 text-zinc-600 dark:text-zinc-400">
+
+              <div className="space-y-6 text-zinc-600 dark:text-zinc-400 text-sm">
                 <p className="leading-relaxed">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
