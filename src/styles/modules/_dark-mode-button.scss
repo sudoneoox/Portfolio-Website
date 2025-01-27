@@ -1,22 +1,20 @@
 .dark-mode-button {
-  z-index: 10;
-  display: fixed;
-  position: absolute;
+  position: fixed;
   bottom: 4.5%;
-  right: 1.75%;
+  right: 2.5%;
   padding: 0.75rem;
   border-radius: 9999px;
 
   &-sun {
     opacity: 1;
     color: rgb(234,179,8);
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
   &-moon {
     opacity: 1;
     color: rgb(55,65,81);
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }

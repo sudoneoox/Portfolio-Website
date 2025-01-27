@@ -1,0 +1,49 @@
+$DESKTOP-DEFAULT-MIN-W: 80rem; // default desktop screens (1920x1080 screens)
+
+.main-content-right-summary {
+ &-blog-container {
+    width: 100%;
+    max-width: 90%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    &-title {
+      font-size: 2.5rem;
+      line-height: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.75rem;
+    }
+    &-article {
+      font-size: 1rem;
+      line-height: 1.25rem;
+      padding-top: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom-width: 1px;
+      width: 100%;
+    }
+    &-link {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+
+    }
+    &-text-container {
+      padding-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.75rem;
+    }
+ }
+}
+
+@media (width >= $DESKTOP-DEFAULT-MIN-W) {
+  .main-content-right-summary {
+    &-blog-container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+}
+

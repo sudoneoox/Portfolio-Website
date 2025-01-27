@@ -1,0 +1,40 @@
+$DESKTOP-DEFAULT-MIN-W: 80rem; // default desktop screens (1920x1080 screens)
+
+.main-content-right-summary {
+  &-aboutme-container {
+    width: 100%;
+    max-width: 90%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left:2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  &-aboutme-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+  &-text-contain {
+    font-size: 1.125rem;
+    margin-bottom: 2.25rem;
+    line-height: 1.75;
+  }
+  &-list {
+    list-style-position: outside;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+}
+
+
+@media (width >= $DESKTOP-DEFAULT-MIN-W) {
+  .main-content-right-summary {
+    &-aboutme-container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+}
+

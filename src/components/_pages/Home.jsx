@@ -1,4 +1,7 @@
+import "../../styles/output.css";
+
 import LeftSideSummary from "../_ui/LeftSideSummary.jsx";
+
 const Home = () => {
   return (
     <>
@@ -16,11 +19,11 @@ const Home = () => {
 
 const AboutMeRightHandSide = () => {
   return (
-    <div className="">
-      <h1 className="text-4xl font-bold text-zinc-900 dark:text-white mb-6">
+    <div className="main-content-right-summary-aboutme-container">
+      <h1 className="main-content-right-summary-aboutme-title text-zinc-900 dark:text-white">
         About Me
       </h1>
-      <div className="text-xl mb-10 text-zinc-600 dark:text-zinc-400 leading-relaxed ">
+      <div className="main-content-right-summary-text-contain text-zinc-600 dark:text-zinc-400 space-y-4">
         <p>
           Welcome! I'm a passionate student with a strong interest in
           mathematics and computer science.
@@ -44,11 +47,11 @@ const AboutMeRightHandSide = () => {
           the release of Letraset sheets containing Lorem Ipsum passages
         </p>
       </div>
-      <h2 className="text-4xl font-semibold text-zinc-900 dark:text-white mt-6 mb-4">
+      <h2 className="main-content-right-summary-aboutme-title">
         Skills & Interests
       </h2>
-      <div className="text-xl">
-        <ul className="list-outside text-zinc-600 dark:text-zinc-400 space-y-2">
+      <div>
+        <ul className="main-content-right-summary-list text-zinc-600 dark:text-zinc-400 space-y-4">
           <li>Operating System Development</li>
           <li>Database Design & Optimization</li>
           <li>Programming with C/C++ & Javascript/Typescript</li>
