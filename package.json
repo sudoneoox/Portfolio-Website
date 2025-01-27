@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/drei": "^9.121.4",
+    "@react-three/postprocessing": "^2.19.1",
     "@tabler/icons-react": "^2.47.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.473.0",
