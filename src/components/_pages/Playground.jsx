@@ -16,7 +16,7 @@ const Playground = () => {
 
 const CanvasContainer = () => {
   const { isDarkMode } = useTheme();
-  const DEBUG_MODE = true;
+  const DEBUG_MODE = false;
 
   return (
     <Canvas
