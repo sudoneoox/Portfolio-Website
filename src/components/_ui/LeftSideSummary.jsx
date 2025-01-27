@@ -7,7 +7,7 @@ const LeftSideSummary = () => {
     <>
       {" "}
       {/* Sidebar - hidden on mobile */}
-      <aside className="hidden lg:block w-[250px] px-10 py-10 h-[calc(100vh-5rem)] overflow-y-auto">
+      <aside className="hidden lg:block px-10 py-10">
         {/* Profile Image */}
         <div className="flex flex-col items-center">
           <div className="w-48 h-48 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-4">

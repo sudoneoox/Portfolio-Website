@@ -1,17 +1,16 @@
 import React from "react";
 import { useTheme } from "../config.tsx";
 import Footer from "./_ui/footer.jsx";
-import Navbar from "./_ui/navbar.tsx";
+import Navbar from "./_ui/navbar.jsx";
 import Posts from "./_pages/Posts.jsx";
 import Projects from "./_pages/Projects.jsx";
 import Playground from "./_pages/Playground.jsx";
 import Home from "./_pages/Home.jsx";
-
 import { Sun, Moon } from "lucide-react";
 
-import "../output.css";
+import "../styles/output.css";
 
-const PortfolioManager: React.FC = () => {
+const PortfolioManager = () => {
   const { isDarkMode, toggleDarkMode, activeRoute, setActiveRoute } =
     useTheme();
 
@@ -29,21 +28,21 @@ const PortfolioManager: React.FC = () => {
   };
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 ${isDarkMode ? "dark bg-gray-0" : "bg-gray-50"}`}
+      className={`transition-colors duration-300 ${isDarkMode ? "dark bg-gray-0" : "bg-gray-50"}`}
     >
       <Navbar />
       <button
         onClick={toggleDarkMode}
-        className="fixed bottom-4 right-4 p-3 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg hover:scale-110 transition-transform duration-200"
+        className="dark-mode-button bg-white/90 dark:bg-gray-800/90 shadow-lg hover:scale-110 transition-transform duration-200 "
         aria-label="Toggle dark mode"
       >
         {isDarkMode ? (
-          <Sun className="w-5 h-5 text-yellow-500" />
+          <Sun className="dark-mode-button-sun" />
         ) : (
-          <Moon className="w-5 h-5 text-gray-700" />
+          <Moon className="dark-mode-button-moon" />
         )}
       </button>
-      <main className="pt-0 px-4 max-w-7xl mx-auto">{renderContent()}</main>
+      <main className="main-content">{renderContent()}</main>
       <Footer />
     </div>
   );

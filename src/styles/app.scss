@@ -1,0 +1,38 @@
+// MODULES 
+@use 'modules/main-grid';
+@use 'modules/main-nav';
+@use 'modules/dark-mode-button';
+@use 'modules/main-footer';
+
+// FONTS 
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+
+// TAILWIND CONFIG 
+@config "../../tailwind.config.ts";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+// CONSTANTS 
+$DARK-MODE-PRIMARY: #18181b;
+
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+:root {
+  --background-color: white;
+  --text-color: $DARK-MODE-PRIMARY;
+}
+
+.dark {
+  --background-color: $DARK-MODE-PRIMARY;
+  --text-color: white;
+  color-scheme: dark;
+}
+

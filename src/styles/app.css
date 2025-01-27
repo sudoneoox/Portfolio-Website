@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+.main-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 8fr; /* Left sidebar and main content */
+  gap: 2rem; /* Space between columns */
+  padding: 1rem;
+}
+.main-content-left-summary {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  background-color: var(--background-color, white);
+  padding: 1rem;
+}
+.main-content-right-summary {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  padding: 1rem;
+}
+
+.main-content > * {
+  border: 3px solid #ccc;
+  padding: 1rem;
+}
+
+.grid-debug {
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr; /* Stack on mobile */
+    padding: 1rem;
+  }
+  .main-content-left-summary {
+    grid-column: 1/-1;
+    position: static;
+    max-height: none;
+  }
+  .main-content-right-summary {
+    grid-column: 1/-1;
+  }
+}
+.navbar-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+.navbar-brand {
+  font-family: serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  transition: colors 200ms;
+}
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.navbar-item {
+  position: relative;
+  color: rgb(82, 82, 91);
+  transition: all 200ms;
+}
+.navbar-item-underline {
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  width: 0;
+  height: 0.125rem;
+  background-color: rgb(79, 70, 229);
+  transition: all 300ms;
+}
+.navbar-item-underline--active {
+  width: 100%;
+}
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  gap: 1.25rem;
+}
+.navbar-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: rgb(82, 82, 91);
+  transition: colors 200ms;
+}
+
+@media (min-width: 640px) {
+  .navbar-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .navbar-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+.dark-mode-button {
+  z-index: 10;
+  display: fixed;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  border-radius: 9999px;
+}
+.dark-mode-button-sun {
+  opacity: 1;
+  color: rgb(234, 179, 8);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.dark-mode-button-moon {
+  opacity: 1;
+  color: rgb(55, 65, 81);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.main-footer {
+  border-top-width: 1px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.main-footer-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.main-footer-container-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-footer-copyright {
+  font-size: 0.875rem;
+  line-height: 1.275rem;
+}
+
+@media (min-width: 1024px) {
+  .main-footer-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .main-footer-container-flex {
+    flex-direction: row;
+  }
+}
+@config "../../tailwind.config.ts";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+:root {
+  --background-color: white;
+  --text-color: $DARK-MODE-PRIMARY;
+}
+
+.dark {
+  --background-color: $DARK-MODE-PRIMARY;
+  --text-color: white;
+  color-scheme: dark;
+}
+
+/*# sourceMappingURL=app.css.map */

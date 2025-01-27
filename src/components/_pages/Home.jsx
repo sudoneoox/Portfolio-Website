@@ -1,14 +1,14 @@
 import LeftSideSummary from "../_ui/LeftSideSummary.jsx";
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-900 w-full">
+    <div className="bg-white dark:bg-zinc-900">
       {/* Container with max width and centered */}
-      <div className="w-[100%] max-w-[1800px] mx-auto pt-0 px-1">
-        {/* Grid layout with fixed sidebar and flexible content */}
-        <div className="grid lg:grid-cols-[300px_1fr]">
-          <LeftSideSummary />
-          <AboutMeRightHandSide />
-        </div>
+      {/* Grid layout with fixed sidebar and flexible content */}
+      <div className="main-content-left-summary">
+        <LeftSideSummary />
+      </div>
+      <div className="main-content-right-summary">
+        <AboutMeRightHandSide />
       </div>
     </div>
   );
@@ -16,7 +16,7 @@ const Home = () => {
 
 const AboutMeRightHandSide = () => {
   return (
-    <div className="max-w-4xl py-8 ml-8 lg:px-2">
+    <div className="">
       <h1 className="text-4xl font-bold text-zinc-900 dark:text-white mb-6">
         About Me
       </h1>

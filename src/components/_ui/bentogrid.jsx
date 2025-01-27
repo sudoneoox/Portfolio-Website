@@ -1,5 +1,5 @@
 import { cn } from "../_utils/cn.ts";
-import "../../output.css";
+import "../../styles/output.css";
 import React from "react";
 
 export const BentoGrid = ({ className, children }) => {

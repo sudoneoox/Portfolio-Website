@@ -7,7 +7,8 @@ const Posts = () => {
       {/* Container with max width and centered */}
       <div className="w-[100%] max-w-[1800px] mx-auto pt-0 px-1">
         {/* Grid layout with fixed sidebar and flexible content */}
-        <div className="grid lg:grid-cols-[300px_1fr]">
+        {/* <div className="grid lg:grid-cols-[300px_1fr]"> */}
+        <div>
           <LeftSideSummary />
           <MainContent />
         </div>
