@@ -10,8 +10,8 @@ const BubbleExplosion = ({ position, color }) => {
     particles.forEach((particle, i) => {
       const angle = (i / 8) * Math.PI * 2;
       particle.userData.velocity = {
-        x: Math.cos(angle) * 0.1,
-        y: Math.sin(angle) * 0.1,
+        x: Math.cos(angle),
+        y: Math.sin(angle),
       };
     });
   }, []);
@@ -34,7 +34,7 @@ const BubbleExplosion = ({ position, color }) => {
           position={[position[0], position[1], position[2]]}
           scale={[1, 1, 1]}
         >
-          <circleGeometry args={[0.1, 16]} />
+          <circleGeometry args={[0.3, 16]} />
           <meshBasicMaterial color={color} transparent opacity={0.6} />
         </mesh>
       ))}

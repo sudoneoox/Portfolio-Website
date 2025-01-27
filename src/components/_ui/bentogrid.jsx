@@ -1,15 +1,9 @@
 import { cn } from "../_utils/cn.ts";
 import "../../styles/output.css";
-import React from "react";
 
 export const BentoGrid = ({ className, children }) => {
   return (
-    <div
-      className={cn(
-        "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto ",
-        className,
-      )}
-    >
+    <div className={cn("project-container-bento-grid", className)}>
       {children}
     </div>
   );
@@ -21,25 +15,40 @@ export const BentoGridItem = ({
   description,
   header,
   icon,
+  image,
+  link,
   key,
 }) => {
   return (
-    <div
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
       className={cn(
-        "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
+        "project-container-bento-grid-item-contain group/bento hover:shadow-xl transition duration-200 space-y-4",
         className,
       )}
+      key={key}
     >
       {header}
       <div className="group-hover/bento:translate-x-2 transition duration-200">
+        {image && (
+          <div className="project-container-bento-grid-img-container ">
+            <img
+              src={image}
+              alt={title}
+              className="project-container-bento-grid-img-container-img group-hover/bento:scale-105"
+            />
+          </div>
+        )}
         {icon}
-        <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
+        <div className="project-container-bento-grid-item-contain-title">
           {title}
         </div>
-        <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
+        <div className="project-container-bento-grid-item-contain-desc">
           {description}
         </div>
       </div>
-    </div>
+    </a>
   );
 };

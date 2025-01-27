@@ -43,7 +43,7 @@ const PortfolioManager = () => {
         )}
       </button>
       <main
-        className={`${activeRoute === "playground" ? "" : "main-content"} bg-white dark:bg-zinc-900`}
+        className={`${activeRoute === "playground" || activeRoute === "projects" ? "" : "main-content"} bg-white dark:bg-zinc-900`}
       >
         {renderContent()}
       </main>

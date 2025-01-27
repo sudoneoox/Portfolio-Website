@@ -61,7 +61,7 @@ const BubbleField = () => {
     if (Math.random() < 0.05) {
       const newBubble = {
         id: Math.random(),
-        position: [(Math.random() - 0.5) * 10, 10, 0],
+        position: [(Math.random() - 0.5) * 10, 5, 0],
         speed: 0.01 + Math.random() * 0.009,
         size: 0.2 + Math.random() * 0.6,
         drift: Math.random() * Math.PI * 2,
