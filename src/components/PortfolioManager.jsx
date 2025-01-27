@@ -42,7 +42,9 @@ const PortfolioManager = () => {
           <Moon className="dark-mode-button-moon" />
         )}
       </button>
-      <main className="main-content">{renderContent()}</main>
+      <main className="main-content bg-white dark:bg-zinc-900">
+        {renderContent()}
+      </main>
       <Footer />
     </div>
   );

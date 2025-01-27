@@ -1,7 +1,7 @@
 import LeftSideSummary from "../_ui/LeftSideSummary.jsx";
 const Home = () => {
   return (
-    <div className="bg-white dark:bg-zinc-900">
+    <>
       {/* Container with max width and centered */}
       {/* Grid layout with fixed sidebar and flexible content */}
       <div className="main-content-left-summary">
@@ -10,7 +10,7 @@ const Home = () => {
       <div className="main-content-right-summary">
         <AboutMeRightHandSide />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -17,17 +17,26 @@
 
 // CONSTANTS 
 $DARK-MODE-PRIMARY: #18181b;
+$LIGHT-MODE-PRIMARY: #ffffff;
+
 
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100%;
 }
 
 :root {
   --background-color: white;
   --text-color: $DARK-MODE-PRIMARY;
+}
+
+.light {
+  --background-color: $LIGHT-MODE-PRIMARY;
+  --text-color: black;
+  color-scheme: light;
 }
 
 .dark {

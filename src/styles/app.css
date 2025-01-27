@@ -2,30 +2,26 @@
 .main-content {
   width: 100%;
   display: grid;
-  grid-template-columns: 2fr 8fr; /* Left sidebar and main content */
-  gap: 2rem; /* Space between columns */
-  padding: 1rem;
+  grid-template-columns: 3fr 7fr; /* Left sidebar and main content */
+  gap: 0.75rem; /* Space between columns */
+  padding: 0.5rem;
+  z-index: 1;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 .main-content-left-summary {
-  grid-column-start: 1;
-  grid-column-end: 1;
+  grid-template-columns: 1/1;
   background-color: var(--background-color, white);
   padding: 1rem;
 }
 .main-content-right-summary {
-  grid-column-start: 2;
-  grid-column-end: 2;
+  grid-template-columns: 2/2;
   padding: 1rem;
 }
 
 .main-content > * {
-  border: 3px solid #ccc;
+  border: 0.01rem solid #333131;
   padding: 1rem;
-}
-
-.grid-debug {
-  border: 1px solid rgba(255, 0, 0, 0.2);
-  background-color: rgba(255, 0, 0, 0.1);
 }
 
 /* Responsive design */
@@ -33,9 +29,11 @@
   .main-content {
     grid-template-columns: 1fr; /* Stack on mobile */
     padding: 1rem;
+    border: 0px;
   }
   .main-content-left-summary {
     grid-column: 1/-1;
+    display: hidden;
     position: static;
     max-height: none;
   }
@@ -44,7 +42,7 @@
   }
 }
 .navbar-container {
-  max-width: 80rem;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
@@ -55,6 +53,12 @@
   align-items: center;
   justify-content: space-between;
   height: 4rem;
+}
+:root.light .navbar-wrapper {
+  border-bottom: 1px solid #000;
+}
+:root.dark .navbar-wrapper {
+  border-bottom: 1px solid #2d2d2f;
 }
 .navbar-brand {
   font-family: serif;
@@ -115,8 +119,8 @@
   z-index: 10;
   display: fixed;
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 4.5%;
+  right: 1.75%;
   padding: 0.75rem;
   border-radius: 9999px;
 }
@@ -134,14 +138,13 @@
 }
 
 .main-footer {
-  border-top-width: 1px;
+  border-top-width: 1px solid;
+  margin-top: 0.25rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 .main-footer-container {
   max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -150,8 +153,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  height: 2rem;
 }
 .main-footer-copyright {
+  align-self: start;
   font-size: 0.875rem;
   line-height: 1.275rem;
 }
@@ -175,11 +180,18 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100%;
 }
 
 :root {
   --background-color: white;
   --text-color: $DARK-MODE-PRIMARY;
+}
+
+.light {
+  --background-color: $LIGHT-MODE-PRIMARY;
+  --text-color: black;
+  color-scheme: light;
 }
 
 .dark {
