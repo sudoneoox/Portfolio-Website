@@ -34,7 +34,7 @@ const LeftSideSummary = () => {
           <SidebarLink
             icon={School}
             text={PERSONAL_INFO.university}
-            href="https:/uh.edu/nsm/computer-science/"
+            href="https://uh.edu/nsm/computer-science"
           />
           <SidebarLink
             icon={Mail}
