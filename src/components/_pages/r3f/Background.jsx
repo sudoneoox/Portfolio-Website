@@ -7,8 +7,8 @@ const Background = () => {
 
   return (
     <mesh position={[0, 0, -1]} ref={meshRef}>
-      <planeGeometry args={[20, 20]} />
-      <meshBasicMaterial color={isDarkMode ? "#1a1a1a" : "#f5f5f5"} />
+      <planeGeometry args={[10.1, 10.1]} />
+      <meshBasicMaterial color={isDarkMode ? "#1a1a1a" : "#fffbf1"} />
     </mesh>
   );
 };

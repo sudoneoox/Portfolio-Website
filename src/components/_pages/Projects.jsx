@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import { BentoGrid, BentoGridItem } from "../_ui/bentogrid.jsx";
 import BlobCursor from "../_ui/BlobCursor/BlobCursor.jsx";
-import { useTheme } from "../../config.tsx";
 import "../../styles/output.css";
 
 const Projects = ({ isDarkMode }) => {
   return (
     <div className="project-container">
-      <div className={`blob-cursor-overlay `}>
-        <BlobCursor fillColor={`${isDarkMode ? "#ff9900" : "#00aaff"}`} />
-      </div>
-
+      <BlobCursor fillColor={`${isDarkMode ? "#ff9900" : "#00aaff"}`} />
       <BentoGrid>
-        {/* Add mouse event handlers to disable the cursor within grid items */}
         <BentoGridItem
           link="google.com"
           image="https://placehold.co/600x400"

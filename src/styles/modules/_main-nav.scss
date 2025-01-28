@@ -1,3 +1,4 @@
+$TABLET-MIN-PORTRAIT-W: 48rem;
 
 .navbar {
   &-container {
@@ -31,6 +32,11 @@
     letter-spacing: -0.025em;
     text-decoration: none;
     transition: colors 200ms;
+    padding-top: 0.5rem;
+    &:active {
+      color: #4f46e5;
+    }
+
   }
 
   &-menu {
@@ -85,5 +91,13 @@
   .navbar-container {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+}
+
+@media (width <= $TABLET-MIN-PORTRAIT-W){
+  .navbar-container{
+    &-brand {
+      font-size: 1rem;
+    }
   }
 }

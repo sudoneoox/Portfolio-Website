@@ -1,7 +1,7 @@
 import "../../styles/output.css";
 import { useTheme } from "../../config.tsx";
 import { Canvas } from "@react-three/fiber";
-import { Stats } from "@react-three/drei";
+import { OrbitControls, Stats } from "@react-three/drei";
 import { EffectComposer, Noise, Bloom } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import Scene from "./r3f/Scene.jsx";
@@ -24,22 +24,29 @@ const CanvasContainer = () => {
       id="playground-container-canvas"
       camera={{ position: [0, 0, 4] }}
       style={{
-        background: isDarkMode ? "#1a1a1a" : "#f1f1f1",
+        background: isDarkMode ? "#1a1a1a" : "#f5f5f5",
       }}
     >
       <Scene />
       <EffectComposer multisampling={0}>
         <Noise
-          opacity={isDarkMode ? 0.3 : 0.15}
+          opacity={isDarkMode ? 0.35 : 0.15}
           premultiply
-          blendFunction={BlendFunction.SOFT_LIGHT}
+          blendFunction={
+            isDarkMode ? BlendFunction.HARD_LIGHT : BlendFunction.SOFT_LIGHT
+          }
         />
         <Bloom
-          intensity={0.5}
+          intensity={isDarkMode ? 0.7 : 0.05}
           luminanceThreshold={0.1}
           luminanceSmoothing={0.9}
         />
-        {DEBUG_MODE && <Stats />}
+        {DEBUG_MODE && (
+          <>
+            <OrbitControls />
+            <Stats />
+          </>
+        )}
       </EffectComposer>
     </Canvas>
   );

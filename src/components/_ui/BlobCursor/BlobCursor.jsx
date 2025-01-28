@@ -1,14 +1,17 @@
-import { useTrail, animated } from '@react-spring/web'
-import { useRef, useEffect, useCallback } from 'react';
+import { useTrail, animated } from "@react-spring/web";
+import { useRef, useEffect, useCallback } from "react";
 
-import './BlobCursor.css';
+import "./BlobCursor.css";
 
 const fast = { tension: 1200, friction: 40 };
 const slow = { mass: 10, tension: 200, friction: 50 };
 const trans = (x, y) => `translate3d(${x}px,${y}px,0) translate3d(-50%,-50%,0)`;
 
-export default function BlobCursor({ blobType = 'circle', fillColor = '#00f0ff' }) {
-  const [trail, api] = useTrail(3, i => ({
+export default function BlobCursor({
+  blobType = "circle",
+  fillColor = "#00f0ff",
+}) {
+  const [trail, api] = useTrail(3, (i) => ({
     xy: [0, 0],
     config: i === 0 ? fast : slow,
   }));
@@ -23,7 +26,7 @@ export default function BlobCursor({ blobType = 'circle', fillColor = '#00f0ff' 
     return { left: 0, top: 0 };
   }, []);
 
-  const handleMove = e => {
+  const handleMove = (e) => {
     const { left, top } = updatePosition();
     const x = e.clientX || (e.touches && e.touches[0].clientX);
     const y = e.clientY || (e.touches && e.touches[0].clientY);
@@ -35,15 +38,15 @@ export default function BlobCursor({ blobType = 'circle', fillColor = '#00f0ff' 
       updatePosition();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [updatePosition]);
 
   return (
-    <div className='container'>
-      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+    <div className="container">
+      <svg style={{ position: "absolute", width: 0, height: 0 }}>
         <filter id="blob">
           <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="30" />
           <feColorMatrix
@@ -54,16 +57,19 @@ export default function BlobCursor({ blobType = 'circle', fillColor = '#00f0ff' 
       </svg>
       <div
         ref={ref}
-        className='main'
+        className="blob-main"
         onMouseMove={handleMove}
         onTouchMove={handleMove}
       >
         {trail.map((props, index) => (
-          <animated.div key={index} style={{
-            transform: props.xy.to(trans),
-            borderRadius: blobType === 'circle' ? '50%' : '0%',
-            backgroundColor: fillColor
-          }} />
+          <animated.div
+            key={index}
+            style={{
+              transform: props.xy.to(trans),
+              borderRadius: blobType === "circle" ? "100%" : "0%",
+              backgroundColor: fillColor,
+            }}
+          />
         ))}
       </div>
     </div>
