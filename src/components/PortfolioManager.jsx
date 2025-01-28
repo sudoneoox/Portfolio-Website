@@ -19,7 +19,7 @@ const PortfolioManager = () => {
       case "posts":
         return <Posts />;
       case "projects":
-        return <Projects />;
+        return <Projects isDarkMode={isDarkMode} />;
       case "playground":
         return <Playground />;
       default:

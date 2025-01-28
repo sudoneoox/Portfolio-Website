@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { BentoGrid, BentoGridItem } from "../_ui/bentogrid.jsx";
+import BlobCursor from "../_ui/BlobCursor/BlobCursor.jsx";
+import { useTheme } from "../../config.tsx";
 import "../../styles/output.css";
 
-const Projects = () => {
+const Projects = ({ isDarkMode }) => {
   return (
     <div className="project-container">
+      <div className={`blob-cursor-overlay `}>
+        <BlobCursor fillColor={`${isDarkMode ? "#ff9900" : "#00aaff"}`} />
+      </div>
+
       <BentoGrid>
-        {/* Project 1 */}
+        {/* Add mouse event handlers to disable the cursor within grid items */}
         <BentoGridItem
+          link="google.com"
           image="https://placehold.co/600x400"
           title="Project One"
           description="Lorem Ipsum"
@@ -15,7 +22,6 @@ const Projects = () => {
           icon={<span>📘</span>}
         />
 
-        {/* Project 2 */}
         <BentoGridItem
           image="https://placehold.co/600x400"
           title="Project Two"
@@ -24,7 +30,6 @@ const Projects = () => {
           icon={<span>📙</span>}
         />
 
-        {/* Project 3 */}
         <BentoGridItem
           image="https://placehold.co/600x400"
           title="Project Three"
@@ -36,5 +41,4 @@ const Projects = () => {
     </div>
   );
 };
-
 export default Projects;

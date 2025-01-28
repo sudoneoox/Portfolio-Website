@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.121.4",
     "@react-three/postprocessing": "^2.19.1",
     "@tabler/icons-react": "^2.47.0",
