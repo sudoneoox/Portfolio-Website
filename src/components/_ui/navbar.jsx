@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useScrollDirection } from "../_utils/scrollHide.ts";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Menu } from "lucide-react";
 import { useTheme } from "../../config.tsx";
 import { PERSONAL_INFO } from "../_utils/constants.ts";
 import { cn } from "../_utils/cn.ts";
@@ -8,7 +8,7 @@ import "../../styles/output.css";
 
 const Navbar = ({ config = defaultNavConfig }) => {
   const { activeRoute, setActiveRoute } = useTheme();
-  const isVisible = useScrollDirection();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavigation = (route) => {
     if (route) {
@@ -32,8 +32,17 @@ const Navbar = ({ config = defaultNavConfig }) => {
             {config.brand.name}
           </a>
 
+          {/* MOBILE MENU  */}
+          <button
+            className="navbar-mobile-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <Menu />
+          </button>
+
           {/* Menu Items and Social Icons */}
-          <div className="navbar-menu">
+          <div className={`navbar-menu ${isMobileMenuOpen ? "active" : ""}`}>
             {config.menuItems.map((item) =>
               item.route ? (
                 <p

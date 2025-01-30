@@ -3,6 +3,13 @@
   height: auto;
 }
 
+/* hide on mobile and tablets*/
+@media (max-width: 768px) {
+  .blob-main > div {
+    display: none;
+  }
+}
+
 .blob-main > div {
   position: absolute;
   will-change: transform;
