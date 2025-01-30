@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.121.4",
     "@react-three/postprocessing": "^2.19.1",
@@ -17,10 +18,10 @@
     "tailwind-merge": "^2.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "GENERATE_SOURCEMAP=true craco build",
+    "build:prod": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=true craco build",
+    "test": "craco test",
     "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
@@ -42,7 +43,15 @@
     ]
   },
   "devDependencies": {
+    "@craco/types": "^7.1.0",
+    "compression-webpack-plugin": "^11.1.0",
+    "craco-less": "^3.0.1",
+    "cross-env": "^7.0.3",
+    "css-minimizer-webpack-plugin": "^7.0.0",
     "source-map-explorer": "^2.5.3",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "terser-webpack-plugin": "^5.3.11",
+    "url-loader": "^4.1.1",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }
