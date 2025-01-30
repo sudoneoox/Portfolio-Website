@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useScrollDirection } from "../_utils/scrollHide.ts";
 import { Github, Linkedin, Menu } from "lucide-react";
 import { useTheme } from "../../config.tsx";
 import { PERSONAL_INFO } from "../_utils/constants.ts";
 import { cn } from "../_utils/cn.ts";
 import "../../styles/output.css";
+import React, { useState } from "react";
 
 const Navbar = ({ config = defaultNavConfig }) => {
   const { activeRoute, setActiveRoute } = useTheme();

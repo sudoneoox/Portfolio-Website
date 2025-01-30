@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "../config.tsx";
 import Footer from "./_ui/footer.jsx";
 import Navbar from "./_ui/navbar.jsx";
@@ -11,8 +10,7 @@ import { Sun, Moon } from "lucide-react";
 import "../styles/output.css";
 
 const PortfolioManager = () => {
-  const { isDarkMode, toggleDarkMode, activeRoute, setActiveRoute } =
-    useTheme();
+  const { isDarkMode, toggleDarkMode, activeRoute } = useTheme();
 
   const renderContent = () => {
     switch (activeRoute) {

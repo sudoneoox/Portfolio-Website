@@ -1,6 +1,6 @@
 import React from "react";
 import PortfolioManager from "./components/PortfolioManager.jsx";
-import { ThemeProvider } from "./config.tsx";
+import { ThemeProvider } from "./config";
 import "./styles/output.css";
 
 export function App() {

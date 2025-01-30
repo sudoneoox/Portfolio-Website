@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { BentoGrid, BentoGridItem } from "../_ui/bentogrid.jsx";
 import BlobCursor from "../_ui/BlobCursor/BlobCursor.jsx";
 import "../../styles/output.css";
