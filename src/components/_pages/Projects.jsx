@@ -1,6 +1,7 @@
 import { BentoGrid, BentoGridItem } from "../_ui/bentogrid.jsx";
 import { Github, ExternalLink, Youtube } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { PROJECTS } from "../_utils/constants.ts";
 import "../../styles/output.css";
 
 const Projects = ({ isDarkMode }) => {
@@ -80,6 +81,21 @@ const Projects = ({ isDarkMode }) => {
       window.removeEventListener('resize', resizeCanvas);
     };
   }, [isDarkMode]);
+  // Function to render the icon based on the string
+  const renderIcon = (iconString) => {
+    if (iconString) {
+      return <span>{iconString}</span>;
+    }
+    return null;
+  };
+
+  // Function to render the header based on header text
+  const renderHeader = (headerText) => {
+    if (headerText) {
+      return <div className="text-xl font-bold">{headerText}</div>;
+    }
+    return null;
+  };
 
   return (
     <div className="project-container">
@@ -93,42 +109,25 @@ const Projects = ({ isDarkMode }) => {
           width: '100%',
           height: '100%',
           zIndex: 0,
-          opacity: 0.7,
-          pointerEvents: 'none' // Add this line to make canvas non-interactive
+          opacity: 0.7
         }}
-      />      <div className="project-container-content">
-        <h1 className="project-container-title"></h1>
+      />
+      <div className="project-container-content">
+        <h1 className="project-container-title">My Projects</h1>
         <BentoGrid>
-          <BentoGridItem
-            link="https://github.com/username/project1"
-            image="https://placehold.co/600x400"
-            title="Project One"
-            description="Lorem Ipsum dolor sit amet"
-            header={<div className="text-xl font-bold">Header 1</div>}
-            icon={<span>📘</span>}
-            githubLink="https://github.com/username/project1"
-            websiteLink="https://project1-demo.com"
-            videoLink="https://youtube.com/watch?v=example1"
-          />
-
-          <BentoGridItem
-            image="https://placehold.co/600x400"
-            title="Project Two"
-            description="Lorem Ipsum dolor sit amet"
-            header={<div className="text-xl font-bold">Header 2</div>}
-            icon={<span>📙</span>}
-            githubLink="https://github.com/username/project2"
-          />
-
-          <BentoGridItem
-            image="https://placehold.co/600x400"
-            title="Project Three"
-            description="Lorem Ipsum dolor sit amet"
-            header={<div className="text-xl font-bold">Header 3</div>}
-            icon={<span>📗</span>}
-            githubLink="https://github.com/username/project3"
-            websiteLink="https://project3-demo.com"
-          />
+          {PROJECTS.map((project) => (
+            <BentoGridItem
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              icon={renderIcon(project.icon)}
+              header={renderHeader(project.headerText)}
+              githubLink={project.githubLink}
+              websiteLink={project.websiteLink}
+              videoLink={project.videoLink}
+            />
+          ))}
         </BentoGrid>
       </div>
     </div>
