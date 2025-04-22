@@ -16,9 +16,22 @@ $DESKTOP-DEFAULT-MIN-W: 1280px; // default desktop screens (1920x1080 screens)
     align-items: center;
     justify-content: center;
     margin-bottom: 0.5rem;
-    &-initials {
-      font-size: 4.5rem;
-      line-height: 1rem;
+
+    overflow: hidden; // for profile image
+    position: relative;
+
+
+    // &-initials {
+    //   font-size: 4.5rem;
+    //   line-height: 1rem;
+    // }
+    
+
+    &-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
   }

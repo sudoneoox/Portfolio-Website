@@ -11,12 +11,17 @@ const LeftSideSummary = () => {
         {/* Profile Image */}
         <div className="left-side-summary-container-flex-container">
           <div className="left-side-summary-container-profile-image bg-zinc-100 dark:bg-zinc-800">
-            <span className="left-side-summary-container-profile-image-initials text-zinc-400 dark:text-zinc-500">
-              {PERSONAL_INFO.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </span>
+            {/* <span className="left-side-summary-container-profile-image-initials text-zinc-400 dark:text-zinc-500"> */}
+            {/*   {PERSONAL_INFO.name */}
+            {/*     .split(" ") */}
+            {/*     .map((n) => n[0]) */}
+            {/*     .join("")} */}
+            {/* </span> */}
+            <img
+              src="/assets/images/ProfileImage_optimized.jpg"
+              alt={`${PERSONAL_INFO.name} profile`}
+              className="left-side-summary-container-profile-image-photo"
+            />
           </div>
           {/*Name*/}
           <h2 className="left-side-summary-container-title-name text-zinc-900 dark:text-white">

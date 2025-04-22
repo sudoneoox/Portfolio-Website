@@ -3,6 +3,11 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 // This react component is primarily being used in order to keep track of sitewide
 // configurations like a Dark/Light Mode and also to toggle between which active tab is being displayed
 // this is done since we are hosting our page in github pages which only allows static websites
+//
+
+interface ThemeProviderProps {
+  children: React.ReactNode;
+}
 
 interface ThemeContextType {
   isDarkMode: boolean;
@@ -14,11 +19,15 @@ interface ThemeContextType {
 export const ThemeContext = createContext<ThemeContextType>({
   isDarkMode: false,
   toggleDarkMode: () => {},
-  activeRoute: "home",
+  activeRoute: "",
   setActiveRoute: () => {},
 });
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("theme") === "dark";

@@ -354,10 +354,14 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
+  overflow: hidden;
+  position: relative;
 }
-.left-side-summary-container-profile-image-initials {
-  font-size: 4.5rem;
-  line-height: 1rem;
+.left-side-summary-container-profile-image-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .left-side-summary-container-title-name {
   font-size: 1.75rem;

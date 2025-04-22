@@ -7,6 +7,28 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 module.exports = {
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
+      webpackConfig.output = {
+        ...webpackConfig.output,
+        publicPath: process.env.PUBLIC_URL || "/",
+      };
+
+      webpackConfig.module.rules.push({
+        test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              // Add context to properly maintain folder structure
+              context: path.resolve(__dirname, "public"),
+              name: "[path][name].[ext]",
+              publicPath: process.env.PUBLIC_URL || "/",
+              // Update emitFile to ensure files are copied
+              emitFile: true,
+            },
+          },
+        ],
+      });
+
       // Production optimizations only
       if (webpackConfig.mode === "production") {
         // Optimize CSS
@@ -118,22 +140,6 @@ module.exports = {
               reportFilename: "bundle-report.html",
             }),
           );
-        }
-
-        // Modify the file-loader for images
-        const imageRule = webpackConfig.module.rules.find(
-          (rule) => rule.test && rule.test.test(".svg"),
-        );
-        if (imageRule) {
-          imageRule.use = [
-            {
-              loader: require.resolve("url-loader"),
-              options: {
-                limit: 8192, // Inline images < 8kb
-                name: "static/media/[name].[hash:8].[ext]",
-              },
-            },
-          ];
         }
       }
 

@@ -6,6 +6,7 @@
     "@craco/craco": "^7.1.0",
     "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.121.4",
+    "@react-three/fiber": "^8.17.14",
     "@react-three/postprocessing": "^2.19.1",
     "@tabler/icons-react": "^2.47.0",
     "clsx": "^2.1.0",
@@ -20,7 +21,7 @@
   "scripts": {
     "start": "craco start",
     "build": "GENERATE_SOURCEMAP=true craco build",
-    "build:prod": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=true craco build",
+    "build:prod": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",
     "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
@@ -29,6 +30,9 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "engines": {
+    "node": ">=14"
   },
   "browserslist": {
     "production": [
@@ -44,6 +48,8 @@
   },
   "devDependencies": {
     "@craco/types": "^7.1.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
     "compression-webpack-plugin": "^11.1.0",
     "craco-less": "^3.0.1",
     "cross-env": "^7.0.3",
