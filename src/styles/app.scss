@@ -19,29 +19,63 @@
 @tailwind components;
 @tailwind utilities;
 
+
+$MATERIAL-LIGHT-BG: rgba(250, 250, 252, 1);
+$MATERIAL-DARK-BG: rgba(24, 24, 27, 1);
+$MATERIAL-ELEVATION-1-LIGHT: 0 1px 3px rgba(0, 0, 0, 0.08);
+$MATERIAL-ELEVATION-1-DARK: 0 1px 3px rgba(0, 0, 0, 0.2);
+$MATERIAL-ELEVATION-2-LIGHT: 0 3px 6px rgba(0, 0, 0, 0.1);
+$MATERIAL-ELEVATION-2-DARK: 0 3px 6px rgba(0, 0, 0, 0.25);
+$MATERIAL-ELEVATION-3-LIGHT: 0 6px 12px rgba(0, 0, 0, 0.12);
+$MATERIAL-ELEVATION-3-DARK: 0 6px 12px rgba(0, 0, 0, 0.3);
+$MATERIAL-TRANSITION: all 0.2s ease-in-out;
+
+
 // ROOT STYLES
+:root {
+  --background-color: $MATERIAL-LIGHT-BG;
+  --text-color: $DARK-MODE-PRIMARY;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow: #{$MATERIAL-ELEVATION-1-LIGHT};
+  --card-hover-shadow: #{$MATERIAL-ELEVATION-3-LIGHT};
+  --navbar-bg: rgba(255, 255, 255, 0.85);
+  --navbar-border: rgba(228, 228, 231, 0.6);
+  --button-hover-bg: rgba(0, 0, 0, 0.05);
+}
+
+.light {
+  --background-color: $MATERIAL-LIGHT-BG;
+  --text-color: black;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow: #{$MATERIAL-ELEVATION-1-LIGHT};
+  --card-hover-shadow: #{$MATERIAL-ELEVATION-3-LIGHT};
+  --navbar-bg: rgba(255, 255, 255, 0.85);
+  --navbar-border: rgba(228, 228, 231, 0.6);
+  --button-hover-bg: rgba(0, 0, 0, 0.05);
+  color-scheme: light;
+}
+
+.dark {
+  --background-color: $MATERIAL-DARK-BG;
+  --text-color: white;
+  --card-bg: rgba(32, 32, 36, 0.8);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: #{$MATERIAL-ELEVATION-1-DARK};
+  --card-hover-shadow: #{$MATERIAL-ELEVATION-3-DARK};
+  --navbar-bg: rgba(24, 24, 27, 0.85);
+  --navbar-border: rgba(39, 39, 42, 0.6);
+  --button-hover-bg: rgba(255, 255, 255, 0.1);
+  color-scheme: dark;
+}
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  transition: $MATERIAL-TRANSITION;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
-
-:root {
-  --background-color: white;
-  --text-color: $DARK-MODE-PRIMARY;
-}
-
-.light {
-  --background-color: $LIGHT-MODE-PRIMARY;
-  --text-color: black;
-  color-scheme: light;
-}
-
-.dark {
-  --background-color: $DARK-MODE-PRIMARY;
-  --text-color: white;
-  color-scheme: dark;
-}
- 

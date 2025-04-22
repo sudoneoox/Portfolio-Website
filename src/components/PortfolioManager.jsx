@@ -26,12 +26,13 @@ const PortfolioManager = () => {
   };
   return (
     <div
-      className={`transition-colors duration-300 ${isDarkMode ? "dark bg-gray-0" : "bg-gray-50"}`}
+      className={`transition-colors duration-500 ${isDarkMode ? "dark bg-gray-0" : "bg-gray-50"}`}
     >
+
       <Navbar />
       <button
         onClick={toggleDarkMode}
-        className="dark-mode-button bg-white/90 dark:bg-gray-800/90 shadow-lg hover:scale-110 transition-transform duration-200 "
+        className="dark-mode-button hover:scale-110 transition-all duration-300"
         aria-label="Toggle dark mode"
       >
         {isDarkMode ? (

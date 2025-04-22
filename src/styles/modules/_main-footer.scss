@@ -1,23 +1,33 @@
+$MATERIAL-LIGHT-BG: rgba(250, 250, 252, 1);
+$MATERIAL-DARK-BG: rgba(24, 24, 27, 1);
+$MATERIAL-ELEVATION-1-LIGHT: 0 1px 3px rgba(0, 0, 0, 0.08);
+$MATERIAL-ELEVATION-1-DARK: 0 1px 3px rgba(0, 0, 0, 0.2);
+$MATERIAL-ELEVATION-2-LIGHT: 0 3px 6px rgba(0, 0, 0, 0.1);
+$MATERIAL-ELEVATION-2-DARK: 0 3px 6px rgba(0, 0, 0, 0.25);
+$MATERIAL-ELEVATION-3-LIGHT: 0 6px 12px rgba(0, 0, 0, 0.12);
+$MATERIAL-ELEVATION-3-DARK: 0 6px 12px rgba(0, 0, 0, 0.3);
+$MATERIAL-TRANSITION: all 0.2s ease-in-out;
+
+
 .main-footer {
   margin-top: auto;
   width: 100%;
   height: 5rem;
   z-index: 10;
-  border-top-width: 1px solid;
+  border-top: 1px solid var(--navbar-border);
   margin-top: 0.25rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-
-  box-shadow: 0 -2px 10px rgba(0,0,0, 0.05);
-  backdrop-filter: blur(8px);
+  background-color: var(--navbar-bg);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  transition: $MATERIAL-TRANSITION;
 
   &-container {
     max-width: 80rem;
     margin: 0 auto; // better centering
-    padding-left: 1.5rem;
-    padding-right:1.5rem;
-
   }
+
   &-container-flex {
     display: flex;
     flex-direction: column;
@@ -26,6 +36,7 @@
     min-height: 2rem;
     gap: 1rem;
   }
+
   &-copyright {
     align-self: start;
     font-size: 0.875rem;
@@ -33,4 +44,3 @@
     opacity: 0.8rem;
   }
 }
-

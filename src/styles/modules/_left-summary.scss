@@ -1,13 +1,24 @@
 $PHONE-MIN-PORTRAIT-W: 480px;
 $DESKTOP-DEFAULT-MIN-W: 1280px; // default desktop screens (1920x1080 screens)
+$MATERIAL-LIGHT-BG: rgba(250, 250, 252, 1);
+$MATERIAL-DARK-BG: rgba(24, 24, 27, 1);
+$MATERIAL-ELEVATION-1-LIGHT: 0 1px 3px rgba(0, 0, 0, 0.08);
+$MATERIAL-ELEVATION-1-DARK: 0 1px 3px rgba(0, 0, 0, 0.2);
+$MATERIAL-ELEVATION-2-LIGHT: 0 3px 6px rgba(0, 0, 0, 0.1);
+$MATERIAL-ELEVATION-2-DARK: 0 3px 6px rgba(0, 0, 0, 0.25);
+$MATERIAL-ELEVATION-3-LIGHT: 0 6px 12px rgba(0, 0, 0, 0.12);
+$MATERIAL-ELEVATION-3-DARK: 0 6px 12px rgba(0, 0, 0, 0.3);
+$MATERIAL-TRANSITION: all 0.2s ease-in-out;
+
 
 .left-side-summary-container {
   padding: 2.25rem;
-  &-flex-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--card-shadow);
+  transition: $MATERIAL-TRANSITION;
+
   &-profile-image {
     width: 12rem;
     height: 12rem;
@@ -16,72 +27,82 @@ $DESKTOP-DEFAULT-MIN-W: 1280px; // default desktop screens (1920x1080 screens)
     align-items: center;
     justify-content: center;
     margin-bottom: 0.5rem;
-
-    overflow: hidden; // for profile image
+    overflow: hidden;
     position: relative;
-
-
-    // &-initials {
-    //   font-size: 4.5rem;
-    //   line-height: 1rem;
-    // }
-    
+    box-shadow: var(--card-shadow);
+    border: 3px solid var(--card-border);
 
     &-photo {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-    }
+      transition: transform 0.5s ease;
 
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
   }
+
   &-title-name {
     font-size: 1.75rem;
     font-weight: 600;
     margin-top: 0;
     padding-bottom: 0.5rem;
   }
+
   &-text-bio {
     font-size: 1rem;
     text-align: center;
     margin-top: 0;
     margin-bottom: 1.5rem;
   }
+
   &-contact-links {
     margin-bottom: 1.5rem;
     font-size: 1.25rem;
   }
+
   &-semiheaders {
     font-size: 1.2rem;
     line-height: 1.5rem;
     font-weight: 700;
     padding-bottom: 0.3rem;
     margin-bottom: 0;
-   }
+  }
 
-   &-educ-text {
-     font-size: 0.9rem;
-     line-height: 1.25rem;
-      font-weight: 400;
-      padding-bottom: 1rem;
-   }
-   &-interests-text {
-     padding-left: 1rem;
-     padding-right: 1rem;
-     padding-top: 0.25rem;
-     padding-bottom: 0.25rem;
-     border-radius: 9999px;
-     font-size: 0.875rem;
-     line-height: 1.25rem;
-   }
+  &-educ-text {
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    padding-bottom: 1rem;
+  }
+
+  &-interests-text {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    background-color: var(--button-hover-bg);
+    transition: $MATERIAL-TRANSITION;
+
+    &:hover {
+      background-color: rgba(79, 70, 229, 0.1);
+    }
+  }
 }
 
-@media (width <= $PHONE-MIN-PORTRAIT-W){
-  .left-side-summary-container{
+@media (width <=$PHONE-MIN-PORTRAIT-W) {
+  .left-side-summary-container {
     display: hidden;
   }
 }
-@media (width <= $DESKTOP-DEFAULT-MIN-W){
+
+@media (width <=$DESKTOP-DEFAULT-MIN-W) {
   .left-side-summary-container {
     display: block;
   }
